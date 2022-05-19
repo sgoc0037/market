@@ -1,9 +1,5 @@
-export interface RouteType {
-    path: pathType,
-    Component: React.FC
-}
 
-export enum pathType {
+export enum path {
     ADMIN = 'admin',
     LOGIN = 'login',
     REGISTRATION = 'registration',
