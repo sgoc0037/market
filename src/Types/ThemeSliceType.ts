@@ -2,7 +2,7 @@
 export interface mainThemeType {
     id: number
     name: string
-    img?: Blob
+    img: string
 } 
 
 export interface productsSliceType {
