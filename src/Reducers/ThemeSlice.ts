@@ -1,4 +1,3 @@
-import { mainThemeType } from './../Types/ThemeSliceType';
 import { PayloadAction } from '@reduxjs/toolkit';
 import { productsSliceType } from '../Types/ThemeSliceType';
 import { createSlice } from '@reduxjs/toolkit';
