@@ -1,7 +1,7 @@
 import React from 'react'
 
-export const Products = ()=> {
+export const Theme = ()=> {
     return <div>
-        Products
+        theme
     </div>
 }
