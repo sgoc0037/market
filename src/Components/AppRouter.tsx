@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Routes, Route } from 'react-router-dom'
+import { useAppSelector } from '../app/hooks';
 import { Admin } from '../pages/Admin';
 import { Auth } from '../pages/Auth';
 import { Basket } from '../pages/Basket';
@@ -9,11 +10,9 @@ import { path } from '../Types/RoutesType';
 
 export const AppRouter = () => {
 
-    const [isAuth, setIsAuth] = useState < boolean > (false);
-    const handlerForAuth = () => setIsAuth(!isAuth)
+    const isAuth = useAppSelector(state=> state.isAuth.isAuth)
 
     return <div>
-        <button onClick={handlerForAuth}> Click and change state auth.</button>
         <Routes>
             {isAuth &&
                 <>

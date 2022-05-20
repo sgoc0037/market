@@ -1,3 +1,4 @@
 export interface authSliceType {
-    auth: boolean
+    isAuth: boolean
+    users: {}
 }
