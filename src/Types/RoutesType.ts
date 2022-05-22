@@ -5,5 +5,5 @@ export enum path {
     REGISTRATION = 'registration',
     SHOP = 'shop',
     BASKET = 'basket',
-    THEME = 'theme'
+    PRODUCTS = 'products'
 }

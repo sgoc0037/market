@@ -4,7 +4,7 @@ import { useAppSelector } from '../app/hooks';
 import { Admin } from '../pages/Admin';
 import { Auth } from '../pages/Auth';
 import { Basket } from '../pages/Basket';
-import { Theme } from '../pages/Theme';
+import { Products } from '../pages/Products';
 import { Shop } from '../pages/Shop';
 import { path } from '../Types/RoutesType';
 
@@ -25,7 +25,7 @@ export const AppRouter = () => {
                     <Route path={path.SHOP} element={<Shop />} />
                     <Route path={path.REGISTRATION} element={<Auth />} />
                     <Route path={path.LOGIN} element={<Auth />} />
-                    <Route path={path.THEME} element={<Theme />} />
+                    <Route path={path.PRODUCTS} element={<Products />} />
                 </>
             }
         </Routes>
