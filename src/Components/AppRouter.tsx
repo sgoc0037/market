@@ -10,10 +10,11 @@ import { path } from '../Types/RoutesType';
 
 export const AppRouter = () => {
 
-    const isAuth = useAppSelector(state=> state.isAuth.isAuth)
+    const isAuth = useAppSelector(state => state.isAuth.isAuth)
 
     return <div>
         <Routes>
+            <Route path='/' element={<Auth />} />
             {isAuth &&
                 <>
                     <Route path={path.ADMIN} element={<Admin />} />
@@ -28,6 +29,7 @@ export const AppRouter = () => {
                     <Route path={path.PRODUCTS} element={<Products />} />
                 </>
             }
+            <Route path='*' element={<Auth />} />
         </Routes>
     </div>
 }
