@@ -1,7 +1,7 @@
-import { Card, Menu, MenuProps } from 'antd'
+import { Menu, MenuProps } from 'antd'
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
 import { useAppSelector } from '../app/hooks'
+import { Brands } from '../Components/Brands';
 import { getItem } from '../util/util';
 
 export const Products = () => {
@@ -9,16 +9,15 @@ export const Products = () => {
     const productsType = useAppSelector(state => state.products.productsType)
 
 
-    const [menuType, setMenuType] = useState<number>(productsType[0].id)
+    const [value, setValue] = useState<string>(String(productsType[0].id))
 
-    type MenuItem = Required<MenuProps>['items'][number];
-    const items: MenuItem[] = productsType.map(({name,id})=> {
-        return getItem(name,id)
+    const items: MenuProps['items'] = productsType.map(({ name, id }) => {
+        return getItem(name, id)
     })
 
 
     const menuHandler: MenuProps['onClick'] = (e) => {
-        setMenuType(+e.key)
+        setValue(e.key)
     }
 
     return <>
@@ -27,6 +26,9 @@ export const Products = () => {
             mode='horizontal'
             items={items}
             onClick={menuHandler}
-            selectedKeys={['1']} />
+            defaultSelectedKeys={['1']}
+            selectedKeys={[value]}
+        />
+        <Brands />
     </>
 }
