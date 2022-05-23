@@ -11,7 +11,7 @@ import { path } from '../Types/RoutesType';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
-function getItem(
+export function getItem(
     label: React.ReactNode,
     key: React.Key,
     icon?: React.ReactNode,
@@ -46,8 +46,6 @@ export const Navbar: React.FC = () => {
                 {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
             </Button>
             <Menu
-                defaultSelectedKeys={['1']}
-                defaultOpenKeys={['sub1']}
                 mode="inline"
                 theme="dark"
                 inlineCollapsed={collapsed}
