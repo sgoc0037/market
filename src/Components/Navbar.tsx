@@ -8,24 +8,9 @@ import {
 import type { MenuProps } from 'antd';
 import { Link } from 'react-router-dom';
 import { path } from '../Types/RoutesType';
+import { getItem } from '../util/util';
 
 type MenuItem = Required<MenuProps>['items'][number];
-
-export function getItem(
-    label: React.ReactNode,
-    key: React.Key,
-    icon?: React.ReactNode,
-    children?: MenuItem[],
-    type?: 'group',
-): MenuItem {
-    return {
-        key,
-        icon,
-        children,
-        label,
-        type,
-    } as MenuItem;
-}
 
 const items: MenuItem[] = [
     getItem(<Link to={path.ADMIN}>Admin</Link>, '1', <PieChartOutlined />),
