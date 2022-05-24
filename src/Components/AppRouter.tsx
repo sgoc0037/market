@@ -23,10 +23,11 @@ export const AppRouter = () => {
             }
             {!isAuth &&
                 <>
-                    <Route path={path.SHOP} element={<Shop />} />
                     <Route path={path.REGISTRATION} element={<Auth />} />
                     <Route path={path.LOGIN} element={<Auth />} />
-                    <Route path={path.PRODUCTS} element={<Products />} />
+                    <Route path={path.PRODUCTS} element={<Products />}>
+                        <Route path={path.SHOP} element={<Shop />} />
+                    </Route>
                 </>
             }
             <Route path='*' element={<Auth />} />

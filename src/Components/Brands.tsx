@@ -9,21 +9,17 @@ export const Brands = () => {
     const [value, setValue] = useState<string>(String(brands[0].id))
 
     const items: MenuProps['items'] = brands.map(({ name, id }) => {
-        return {label:name,key:id}
+        return { label: name, key: id }
     })
-
 
     const menuHandler: MenuProps['onClick'] = (e) => {
         setValue(e.key)
     }
 
-    return <>
-
-        <Menu
-            items={items}
-            onClick={menuHandler}
-            defaultSelectedKeys={['0']}
-            selectedKeys={[value]}
-        />
-    </>
+    return <Menu
+        items={items}
+        onClick={menuHandler}
+        defaultSelectedKeys={['0']}
+        selectedKeys={[value]}
+    />
 }

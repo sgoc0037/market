@@ -2,7 +2,7 @@ import { Menu, MenuProps } from 'antd'
 import React, { useState } from 'react'
 import { useAppSelector } from '../app/hooks'
 import { Brands } from '../Components/Brands';
-import { PackCard } from '../Components/packCard';
+import { PackCard } from '../Components/PackCard';
 import { getItem } from '../util/util';
 
 export const Products = () => {
@@ -32,7 +32,7 @@ export const Products = () => {
         />
         <Brands />
         <div>
-            <PackCard></PackCard>
+            <PackCard />
         </div>
     </>
 }
