@@ -11,6 +11,7 @@ import { path } from '../Types/RoutesType';
 export const AppRouter = () => {
 
     const isAuth = useAppSelector(state => state.isAuth.isAuth)
+    const device = useAppSelector(state => state.products.devices)
 
     return <div>
         <Routes>
@@ -25,9 +26,8 @@ export const AppRouter = () => {
                 <>
                     <Route path={path.REGISTRATION} element={<Auth />} />
                     <Route path={path.LOGIN} element={<Auth />} />
-                    <Route path={path.PRODUCTS} element={<Products />}>
-                        <Route path={path.SHOP} element={<Shop />} />
-                    </Route>
+                    <Route path={path.PRODUCTS} element={<Products />} />
+                    <Route path={`${path.PRODUCTS}/:id`} element={<Shop props={device[0]} />} />
                 </>
             }
             <Route path='*' element={<Auth />} />

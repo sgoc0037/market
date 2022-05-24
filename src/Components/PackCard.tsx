@@ -1,5 +1,6 @@
 import { Card } from "antd"
 import { FC } from "react"
+import { Link } from "react-router-dom"
 import { useAppSelector } from "../app/hooks"
 import { devicesType } from "../Types/ProductsSliceType"
 
@@ -12,24 +13,27 @@ interface packCardType {
 
 export const PackCard: FC<packCardType> = ({ props }) => {
 
-    const defaultProps = useAppSelector(state=> state.products.devices)
+    const defaultProps = useAppSelector(state => state.products.devices)
 
-    if(!props) {
+    if (!props) {
         props = defaultProps
     }
 
     return <>
         {props.map(({ id, name, price, img }) => {
 
-            return <Card
-                hoverable
-                key={id}
-                style={{ width: 240 }}
-                cover={<img alt={name} src={img} />}
-            >
-                <span>Price:{price}</span>
-                <Meta title={name} />
-            </Card>
+            return <Link
+                to={String(id)}
+                key={id}>
+                <Card
+                    hoverable
+                    key={id}
+                    style={{ width: 240 }}
+                    cover={<img alt={name} src={img} />}
+                >
+                    <span>Price:{price}</span>
+                    <Meta title={name} />
+                </Card></Link>
         })
         }
     </>

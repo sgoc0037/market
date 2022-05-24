@@ -1,5 +1,6 @@
-import { Button, Divider } from 'antd'
-import React, { FC } from 'react'
+import { Button } from 'antd'
+import React, { FC, MouseEvent } from 'react'
+import { useParams } from 'react-router-dom'
 import { devicesType } from '../Types/ProductsSliceType'
 
 interface shopType {
@@ -7,12 +8,19 @@ interface shopType {
 }
 
 export const Shop: FC<shopType> = ({ props }) => {
+
+    console.log(useParams())
+
+    const clickHandler = (e: MouseEvent<HTMLButtonElement>) => {
+        console.log(e)
+    }
+
     return <>
-        <img src={props.img} alt={props.name} />
+        <img style={{ width: 256 }} src={props.img} alt={props.name} />
         <h2>{props.name}</h2>
         <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-            <Divider>Цена:{props.price}</Divider>
-            <Button type='primary'>Добавить в корзину</Button>
+            <span>Цена:{props.price}</span>
+            <Button onClick={clickHandler} type='primary'>Добавить в корзину</Button>
         </div>
         <ul>Характеристики:
             <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.
