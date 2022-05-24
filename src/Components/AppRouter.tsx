@@ -1,5 +1,5 @@
 import React from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useParams } from 'react-router-dom'
 import { useAppSelector } from '../app/hooks';
 import { Admin } from '../pages/Admin';
 import { Auth } from '../pages/Auth';
@@ -27,7 +27,7 @@ export const AppRouter = () => {
                     <Route path={path.REGISTRATION} element={<Auth />} />
                     <Route path={path.LOGIN} element={<Auth />} />
                     <Route path={path.PRODUCTS} element={<Products />} />
-                    <Route path={`${path.PRODUCTS}/:id`} element={<Shop props={device[0]} />} />
+                    <Route path={`${path.PRODUCTS}/:name`} element={<Shop />} />
                 </>
             }
             <Route path='*' element={<Auth />} />

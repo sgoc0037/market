@@ -23,7 +23,7 @@ export const PackCard: FC<packCardType> = ({ props }) => {
         {props.map(({ id, name, price, img }) => {
 
             return <Link
-                to={String(id)}
+                to={name}
                 key={id}>
                 <Card
                     hoverable
