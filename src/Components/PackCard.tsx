@@ -1,15 +1,22 @@
 import { Card } from "antd"
 import { FC } from "react"
+import { useAppSelector } from "../app/hooks"
 import { devicesType } from "../Types/ProductsSliceType"
 
 
 const { Meta } = Card
 
-interface reCardType {
-    props: Array<devicesType>
+interface packCardType {
+    props?: Array<devicesType>
 }
 
-export const reCard: FC<reCardType> = ({ props }) => {
+export const PackCard: FC<packCardType> = ({ props }) => {
+
+    const defaultProps = useAppSelector(state=> state.products.devices)
+
+    if(!props) {
+        props = defaultProps
+    }
 
     return <>
         {props.map(({ id, name, price, img }) => {

@@ -22,7 +22,7 @@ export const Brands = () => {
         <Menu
             items={items}
             onClick={menuHandler}
-            defaultSelectedKeys={['1']}
+            defaultSelectedKeys={['0']}
             selectedKeys={[value]}
         />
     </>

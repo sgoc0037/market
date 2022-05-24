@@ -2,6 +2,7 @@ import { Menu, MenuProps } from 'antd'
 import React, { useState } from 'react'
 import { useAppSelector } from '../app/hooks'
 import { Brands } from '../Components/Brands';
+import { PackCard } from '../Components/packCard';
 import { getItem } from '../util/util';
 
 export const Products = () => {
@@ -26,9 +27,12 @@ export const Products = () => {
             mode='horizontal'
             items={items}
             onClick={menuHandler}
-            defaultSelectedKeys={['1']}
+            defaultSelectedKeys={['0']}
             selectedKeys={[value]}
         />
         <Brands />
+        <div>
+            <PackCard></PackCard>
+        </div>
     </>
 }

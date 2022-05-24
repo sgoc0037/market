@@ -6,10 +6,12 @@ import { image } from '../util/util';
 
 const initialState: productsSliceType = {
     productsType: [
+        { id: 0, name: 'Любой' },
         { id: 1, name: 'Холодильники' },
         { id: 2, name: 'Смартфоны' }
     ],
     brands: [
+        { id: 0, name: 'Любой' },
         { id: 1, name: 'Samsung' },
         { id: 2, name: 'Apple' },
     ],
