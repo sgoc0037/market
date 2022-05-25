@@ -1,4 +1,4 @@
-import { devicesType } from '../Types/ProductsSliceType';
+import { devicesType, mainProductsType } from '../Types/ProductsSliceType';
 import { PayloadAction } from '@reduxjs/toolkit';
 import { productsSliceType } from '../Types/ProductsSliceType';
 import { createSlice } from '@reduxjs/toolkit';
@@ -25,6 +25,12 @@ const ProductsSlice = createSlice({
     initialState,
     name: 'Products',
     reducers: {
+        setProductsType: (state, action: PayloadAction<mainProductsType>) => {
+            state.productsType.push(action.payload)
+        },
+        setBrands: (state, action: PayloadAction<mainProductsType>) => {
+            state.brands.push(action.payload)
+        },
         setDevices: (state, action: PayloadAction<devicesType>) => {
             state.devices.push(action.payload)
         }
@@ -32,5 +38,5 @@ const ProductsSlice = createSlice({
 })
 
 
-export const { setDevices } = ProductsSlice.actions
+export const { setProductsType, setBrands, setDevices } = ProductsSlice.actions
 export default ProductsSlice.reducer
