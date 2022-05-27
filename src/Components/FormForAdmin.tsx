@@ -1,28 +1,17 @@
 import { Form, Input, InputNumber, Modal, Radio, RadioChangeEvent } from "antd";
-import { ChangeEventHandler, useState } from "react";
-
-interface Values {
-    title: string;
-    description: string;
-    modifier: string;
-}
+import { useState } from "react";
+import { formData, modeForm,  } from "../Types/FormType";
 
 interface CollectionCreateFormProps {
     visible: boolean;
-    onCreate: (values: Values) => void;
+    onCreate: (values: formData) => void;
     onCancel: () => void;
-}
-
-enum modeForm {
-    NEWCATEGORY = 'NewCategory',
-    NEWBRAND = 'NewBrand',
-    NEWPRODUCT = 'NewProduct'
 }
 
 export const FormForAdmin: React.FC<CollectionCreateFormProps> = ({
     visible,
     onCreate,
-    onCancel,
+    onCancel
 }) => {
 
 
@@ -100,7 +89,7 @@ export const FormForAdmin: React.FC<CollectionCreateFormProps> = ({
                             <Input type="textarea" />
                         </Form.Item>
                         <Form.Item name="price" label='Цена'>
-                            <InputNumber min={1} max={10} />
+                            <InputNumber type='number' min={1} max={10} />
                         </Form.Item>
                     </>
                 }

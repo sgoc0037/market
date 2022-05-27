@@ -6,7 +6,7 @@ export interface mainProductsType {
 
 export interface devicesType extends mainProductsType {
     price: number
-    img: string
+    img?: string
 }
 
 export interface productsSliceType {

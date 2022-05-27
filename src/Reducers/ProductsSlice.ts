@@ -3,6 +3,7 @@ import { PayloadAction } from '@reduxjs/toolkit';
 import { productsSliceType } from '../Types/ProductsSliceType';
 import { createSlice } from '@reduxjs/toolkit';
 import { image } from '../util/util';
+import { nanoid } from 'nanoid';
 
 const initialState: productsSliceType = {
     productsType: [
