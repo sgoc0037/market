@@ -1,6 +1,6 @@
 import { Form, Input, InputNumber, Modal, Radio, RadioChangeEvent } from "antd";
 import { useState } from "react";
-import { formData, modeForm,  } from "../Types/FormType";
+import { formData, modeForm, } from "../Types/FormType";
 
 interface CollectionCreateFormProps {
     visible: boolean;
@@ -11,13 +11,27 @@ interface CollectionCreateFormProps {
 export const FormForAdmin: React.FC<CollectionCreateFormProps> = ({
     visible,
     onCreate,
-    onCancel
+    onCancel,
 }) => {
 
+    const optionModeForm = [
+        {
+            label: 'Новая категория товара',
+            value: modeForm.NEWCATEGORY
+        },
+        {
+            label: 'Новый бренд',
+            value: modeForm.NEWBRAND
+        },
+        {
+            label: 'Новый товар',
+            value: modeForm.NEWPRODUCT
+        }
+    ]
 
     const [form] = Form.useForm();
 
-    const [currentRadioValue, setCurrentRadioValue] = useState<string>('')
+    const [currentRadioValue, setCurrentRadioValue] = useState<modeForm>(modeForm.NEWPRODUCT)
 
     const radioHandler = (e: RadioChangeEvent) => {
         setCurrentRadioValue(e.target.value)
@@ -46,13 +60,13 @@ export const FormForAdmin: React.FC<CollectionCreateFormProps> = ({
                 form={form}
                 layout="vertical"
                 name="form_in_modal"
+                initialValues={{ modeForm: currentRadioValue }}
             >
-                <Form.Item name="modeForm" className="collection-create-form_last-form-item">
-                    <Radio.Group onChange={radioHandler}>
-                        <Radio value={modeForm.NEWCATEGORY}>Новая категория товара</Radio>
-                        <Radio value={modeForm.NEWBRAND}>Новый бренд</Radio>
-                        <Radio value={modeForm.NEWPRODUCT}>Новый товар</Radio>
-                    </Radio.Group>
+                <Form.Item name="modeForm">
+                    <Radio.Group
+                        options={optionModeForm}
+                        value={currentRadioValue}
+                        onChange={radioHandler} />
                 </Form.Item>
                 {currentRadioValue === modeForm.NEWCATEGORY &&
                     <>
