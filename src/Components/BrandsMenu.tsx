@@ -16,8 +16,9 @@ export const Brands = () => {
         setValue(e.key)
     }
 
-    return <Menu
+    return <Menu style={{width: 256}}
         items={items}
+        mode='horizontal'
         onClick={menuHandler}
         defaultSelectedKeys={['0']}
         selectedKeys={[value]}

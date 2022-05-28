@@ -1,5 +1,5 @@
 import React from 'react'
-import { Routes, Route, useParams } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import { useAppSelector } from '../app/hooks';
 import { Admin } from '../pages/Admin';
 import { Auth } from '../pages/Auth';
@@ -11,9 +11,8 @@ import { path } from '../Types/RoutesType';
 export const AppRouter = () => {
 
     const isAuth = useAppSelector(state => state.isAuth.isAuth)
-    const device = useAppSelector(state => state.products.devices)
 
-    return <div>
+    return <>
         <Routes>
             <Route path='/' element={<Auth />} />
             {isAuth &&
@@ -32,5 +31,5 @@ export const AppRouter = () => {
             }
             <Route path='*' element={<Auth />} />
         </Routes>
-    </div>
+    </>
 }
