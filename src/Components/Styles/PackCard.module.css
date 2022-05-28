@@ -1,0 +1,13 @@
+.packCard {
+    padding-top: 30px;
+    margin: 0 auto;
+    width: 90%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.packCard__card {
+    width: 25%;
+    margin: 5px;
+}

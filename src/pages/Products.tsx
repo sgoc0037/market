@@ -2,7 +2,10 @@ import { Menu, MenuProps } from 'antd'
 import React, { useState } from 'react'
 import { useAppSelector } from '../app/hooks'
 import { Brands } from '../Components/BrandsMenu';
+import { PackCard } from '../Components/PackCard';
 import { getItem } from '../util/util';
+import style from './Styles/Products.module.css'
+
 
 export const Products = () => {
 
@@ -20,8 +23,8 @@ export const Products = () => {
         setValue(e.key)
     }
 
-    return <div style={{display: 'flex'}}>
-        <Menu
+    return <div className={style.products}>
+        <Menu className={style.products__menu}
             mode='vertical'
             items={items}
             onClick={menuHandler}
@@ -29,5 +32,6 @@ export const Products = () => {
             selectedKeys={[value]}
         />
         <Brands />
+        <PackCard/>
     </div>
 }

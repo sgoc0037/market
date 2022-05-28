@@ -3,7 +3,6 @@ import { PayloadAction } from '@reduxjs/toolkit';
 import { productsSliceType } from '../Types/ProductsSliceType';
 import { createSlice } from '@reduxjs/toolkit';
 import { image } from '../util/util';
-import { nanoid } from 'nanoid';
 
 const initialState: productsSliceType = {
     productsType: [
@@ -19,6 +18,10 @@ const initialState: productsSliceType = {
     devices: [
         { id: 1, name: 'dasdasdas', price: 25000, img: image },
         { id: 2, name: 'waswaswas', price: 25000, img: image },
+        { id: 3, name: 'waswaswas', price: 25000, img: image },
+        { id: 4, name: 'waswaswas', price: 25000, img: image },
+        { id: 5, name: 'waswaswas', price: 25000, img: image },
+        { id: 6, name: 'waswaswas', price: 25000, img: image },
     ]
 }
 

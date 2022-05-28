@@ -1,6 +1,7 @@
 import { Menu, MenuProps } from 'antd'
 import React, { useState } from 'react'
 import { useAppSelector } from '../app/hooks'
+import style from './Styles/BrandsMenu.module.css'
 
 export const Brands = () => {
 
@@ -16,7 +17,8 @@ export const Brands = () => {
         setValue(e.key)
     }
 
-    return <Menu style={{width: 256}}
+    return <Menu
+        className={style.brands}
         items={items}
         mode='horizontal'
         onClick={menuHandler}
