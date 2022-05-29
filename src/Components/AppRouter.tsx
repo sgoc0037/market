@@ -19,6 +19,10 @@ export const AppRouter = () => {
                 <>
                     <Route path={path.ADMIN} element={<Admin />} />
                     <Route path={path.BASKET} element={<Basket />} />
+                    <Route path={path.REGISTRATION} element={<Auth />} />
+                    <Route path={path.LOGIN} element={<Auth />} />
+                    <Route path={path.PRODUCTS} element={<Products />} />
+                    <Route path={`${path.PRODUCTS}/:name`} element={<Shop />} />
                 </>
             }
             {!isAuth &&

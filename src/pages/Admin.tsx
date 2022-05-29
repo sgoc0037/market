@@ -1,5 +1,4 @@
 import { Button } from 'antd'
-import { nanoid } from 'nanoid'
 import React, { useState } from 'react'
 import { useAppDispatch } from '../app/hooks'
 import { FormForAdmin } from '../Components/FormForAdmin'
@@ -13,7 +12,6 @@ export const Admin = () => {
     const [visible, setVisible] = useState(false);
 
     const onCreate = (data: formData) => {
-        data.id = +nanoid()
         switch (data.modeForm) {
             case modeForm.NEWCATEGORY:
                 dispatch(setProductsType(data))
@@ -22,7 +20,8 @@ export const Admin = () => {
                 dispatch(setBrands(data))
                 break;
             case modeForm.NEWPRODUCT:
-                dispatch(setDevices(data))
+                if (data.newProduct)
+                    dispatch(setDevices(data.newProduct))
         }
         setVisible(false);
     };

@@ -6,22 +6,18 @@ import { image } from '../util/util';
 
 const initialState: productsSliceType = {
     productsType: [
-        { id: 0, name: 'Любой' },
-        { id: 1, name: 'Холодильники' },
-        { id: 2, name: 'Смартфоны' }
+        { id: '0', name: 'Любой' },
+        { id: '1', name: 'Холодильники' },
+        { id: '2', name: 'Смартфоны' }
     ],
     brands: [
-        { id: 0, name: 'Любой' },
-        { id: 1, name: 'Samsung' },
-        { id: 2, name: 'Apple' },
+        { id: '0', name: 'Любой' },
+        { id: '1', name: 'Samsung' },
+        { id: '2', name: 'Apple' },
     ],
     devices: [
-        { id: 1, name: 'dasdasdas', price: 25000, img: image },
-        { id: 2, name: 'waswaswas', price: 25000, img: image },
-        { id: 3, name: 'waswaswas', price: 25000, img: image },
-        { id: 4, name: 'waswaswas', price: 25000, img: image },
-        { id: 5, name: 'waswaswas', price: 25000, img: image },
-        { id: 6, name: 'waswaswas', price: 25000, img: image },
+        { id: '1', name: 'dasdasdas', price: 25000, img: image, brand: 'Samsung', type: 'Холодильники' },
+        { id: '2', name: 'applemakentosh', price: 312515, img: image, brand: 'Apple', type: 'Смартфоны' },
     ]
 }
 

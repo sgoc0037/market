@@ -1,4 +1,5 @@
 import { Form, Input, InputNumber, Modal, Radio, RadioChangeEvent } from "antd";
+import { nanoid } from "nanoid";
 import { useState } from "react";
 import { formData, modeForm, } from "../Types/FormType";
 
@@ -31,7 +32,7 @@ export const FormForAdmin: React.FC<CollectionCreateFormProps> = ({
 
     const [form] = Form.useForm();
 
-    const [currentRadioValue, setCurrentRadioValue] = useState<modeForm>(modeForm.NEWPRODUCT)
+    const [currentRadioValue, setCurrentRadioValue] = useState<modeForm>(modeForm.NEWCATEGORY)
 
     const radioHandler = (e: RadioChangeEvent) => {
         setCurrentRadioValue(e.target.value)
@@ -48,8 +49,21 @@ export const FormForAdmin: React.FC<CollectionCreateFormProps> = ({
                 form
                     .validateFields()
                     .then(values => {
+                        let id = nanoid()
+                        const data: formData = {
+                            id,
+                            name: values.name,
+                            modeForm: values.modeForm,
+                            newProduct: {
+                                brand: values.brand,
+                                price: values.price,
+                                type: values.type,
+                                id,
+                                name: values.name
+                            }
+                        }
                         form.resetFields();
-                        onCreate(values);
+                        onCreate(data);
                     })
                     .catch(info => {
                         console.log('Validate Failed:', info);
@@ -71,7 +85,7 @@ export const FormForAdmin: React.FC<CollectionCreateFormProps> = ({
                 {currentRadioValue === modeForm.NEWCATEGORY &&
                     <>
                         <Form.Item
-                            name={modeForm.NEWCATEGORY}
+                            name='name'
                             label="Категория"
                             rules={[{ required: true, message: 'Обязательное поле' }]}
                         >
@@ -82,7 +96,7 @@ export const FormForAdmin: React.FC<CollectionCreateFormProps> = ({
                 {currentRadioValue === modeForm.NEWBRAND &&
                     <>
                         <Form.Item
-                            name={modeForm.NEWBRAND}
+                            name='name'
                             label="Бренд"
                             rules={[{ required: true, message: 'Обязательное поле' }]}
                         >
@@ -93,8 +107,22 @@ export const FormForAdmin: React.FC<CollectionCreateFormProps> = ({
                 {currentRadioValue === modeForm.NEWPRODUCT &&
                     <>
                         <Form.Item
-                            name={modeForm.NEWPRODUCT}
+                            name='name'
                             label="Модель устройства"
+                            rules={[{ required: true, message: 'Обязательное поле' }]}
+                        >
+                            <Input />
+                        </Form.Item>
+                        <Form.Item
+                            name='brand'
+                            label="Бренд"
+                            rules={[{ required: true, message: 'Укажите производителя' }]}
+                        >
+                            <Input />
+                        </Form.Item>
+                        <Form.Item
+                            name='type'
+                            label="Категория продукта"
                             rules={[{ required: true, message: 'Обязательное поле' }]}
                         >
                             <Input />

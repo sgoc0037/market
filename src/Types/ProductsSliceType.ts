@@ -1,12 +1,14 @@
 
 export interface mainProductsType {
-    id: number
+    id: string
     name: string
 }
 
 export interface devicesType extends mainProductsType {
     price: number
     img?: string
+    brand: string
+    type: string
 }
 
 export interface productsSliceType {

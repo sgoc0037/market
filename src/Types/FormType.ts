@@ -1,4 +1,5 @@
-import { mainProductsType } from './ProductsSliceType';
+import { devicesType, mainProductsType } from './ProductsSliceType';
+
 export enum modeForm {
     NEWCATEGORY = 'NewCategory',
     NEWBRAND = 'NewBrand',
@@ -6,7 +7,6 @@ export enum modeForm {
 }
 
 export interface formData extends mainProductsType {
-    description?: string
     modeForm: modeForm
-    price: number
+    newProduct?: devicesType
 }
