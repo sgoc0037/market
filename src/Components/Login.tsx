@@ -22,10 +22,10 @@ export const Login = () => {
     return <Form
         name="basic"
         labelCol={{
-            span: 8,
+            span: 6,
         }}
         wrapperCol={{
-            span: 16,
+            span: 12,
         }}
         initialValues={{
             remember: true,

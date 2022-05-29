@@ -6,7 +6,6 @@ import { path } from '../Types/RoutesType';
 import { getItem } from '../util/util';
 import { Header } from 'antd/lib/layout/layout';
 import { useAppSelector } from '../app/hooks';
-import { useEffect } from 'react';
 
 type MenuItem = Required<MenuProps>['items'][number];
 

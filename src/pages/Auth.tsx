@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useAppSelector } from '../app/hooks';
 import { Login } from '../Components/Login';
 import { Registration } from '../Components/Registration';
+import { formDataType } from '../Types/AuthType';
 import { getItem } from '../util/util';
 
 export const Auth = () => {
@@ -13,7 +14,7 @@ export const Auth = () => {
 
     const [value, setValue] = useState<string>(auth)
 
-    const onFinish = (data: any) => {
+    const onFinish = (data: formDataType) => {
         console.log(data)
     }
 
