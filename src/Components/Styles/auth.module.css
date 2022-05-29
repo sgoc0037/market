@@ -1,4 +1,4 @@
-.registration {
+.auth {
     width: 90%;
     margin: 0 auto;
     margin-top: 30px;
@@ -6,6 +6,6 @@
     flex-direction: column;
     align-items: center;
 }
-.registration__input {
+.auth__item {
     width: 35%;
 }

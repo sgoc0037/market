@@ -2,6 +2,8 @@ import { Button, Checkbox, Form, Input } from 'antd';
 import { CheckboxChangeEvent } from 'antd/lib/checkbox';
 import { useAppDispatch } from '../app/hooks';
 import { setAuth } from '../Reducers/AuthSlice';
+import style from './Styles/auth.module.css'
+
 
 export const Login = () => {
 
@@ -20,6 +22,7 @@ export const Login = () => {
     }
 
     return <Form
+        className={style.auth}
         name="basic"
         labelCol={{
             span: 6,
@@ -34,8 +37,9 @@ export const Login = () => {
         onFinishFailed={onFinishFailed}
         autoComplete="off"
     >
-        <Checkbox onChange={handlerChange}>Click me for auth.</Checkbox>
+        <Checkbox style={{padding: '4px 11px'}} onChange={handlerChange}>Click me for auth.</Checkbox>
         <Form.Item
+            className={style.auth__item}
             label="Username"
             name="username"
             rules={[
@@ -49,6 +53,7 @@ export const Login = () => {
         </Form.Item>
 
         <Form.Item
+            className={style.auth__item}
             label="Password"
             name="password"
             rules={[
@@ -62,22 +67,13 @@ export const Login = () => {
         </Form.Item>
 
         <Form.Item
+            className={style.auth__item}
             name="remember"
-            valuePropName="checked"
-            wrapperCol={{
-                offset: 8,
-                span: 16,
-            }}
-        >
+            valuePropName="checked">
             <Checkbox>Remember me</Checkbox>
         </Form.Item>
 
-        <Form.Item
-            wrapperCol={{
-                offset: 8,
-                span: 16,
-            }}
-        >
+        <Form.Item>
             <Button type="primary" htmlType="submit">
                 Submit
             </Button>
