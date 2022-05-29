@@ -7,7 +7,6 @@ import { devicesType } from '../Types/ProductsSliceType';
 import { getItem } from '../util/util';
 import style from './Styles/Products.module.css'
 
-
 export const Products = () => {
 
     const productsType = useAppSelector(state => state.products.productsType)
@@ -15,11 +14,19 @@ export const Products = () => {
 
     const [currentDevices, setCurrentDevices] = useState<Array<devicesType>>(devices)
 
-    let filterForDevices = (value: string): Array<devicesType> => {
-        return devices.filter((item: devicesType) => {
-            if (item.type === value)
-                return item
-        })
+    let filterForDevices = (value: string, attr: string): Array<devicesType> => {
+        if (attr === 'type') {
+            return devices.filter((item: devicesType) => {
+                if (item.type === value)
+                    return item
+            })
+        } else if (attr === 'brand') {
+            return devices.filter((item: devicesType) => {
+                if (item.brand === value)
+                    return item
+            })
+        }
+        return []
     }
 
     const [value, setValue] = useState<string>(String(productsType[0].name))
@@ -31,7 +38,7 @@ export const Products = () => {
 
     const menuHandler: MenuProps['onClick'] = (e) => {
         setValue(e.key)
-        setCurrentDevices(filterForDevices(e.key))
+        setCurrentDevices(filterForDevices(e.key,'type'))
     }
 
     return <div className={style.products}>

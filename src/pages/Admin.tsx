@@ -22,6 +22,9 @@ export const Admin = () => {
             case modeForm.NEWPRODUCT:
                 if (data.newProduct)
                     dispatch(setDevices(data.newProduct))
+                break;
+            default:
+                alert('Ошибка')
         }
         setVisible(false);
     };
