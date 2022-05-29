@@ -9,14 +9,14 @@ import style from './Styles/PackCard.module.css'
 const { Meta } = Card
 
 interface packCardType {
-    props?: Array<devicesType>
+    props: Array<devicesType>
 }
 
 export const PackCard: FC<packCardType> = ({ props }) => {
 
     const defaultProps = useAppSelector(state => state.products.devices)
 
-    if (!props) {
+    if (props.length === 0) {
         props = defaultProps
     }
 
