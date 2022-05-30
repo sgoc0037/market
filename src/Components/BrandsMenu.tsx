@@ -1,20 +1,26 @@
 import { Menu, MenuProps } from 'antd'
-import React, { useState } from 'react'
+import React, { FC, useState } from 'react'
 import { useAppSelector } from '../app/hooks'
+import { getItem } from '../util/util';
 import style from './Styles/BrandsMenu.module.css'
 
-export const Brands = () => {
+interface brandType {
+    brandHandler: (value: string) => void;
+}
+
+export const Brands: FC<brandType> = ({ brandHandler }) => {
 
     const brands = useAppSelector(state => state.products.brands)
 
-    const [value, setValue] = useState<string>(String(brands[0].id))
+    const [value, setValue] = useState<string>(String(brands[0].name))
 
-    const items: MenuProps['items'] = brands.map(({ name, id }) => {
-        return { label: name, key: id }
+    const items: MenuProps['items'] = brands.map(({ name }) => {
+        return getItem(name, name)
     })
 
     const menuHandler: MenuProps['onClick'] = (e) => {
         setValue(e.key)
+        brandHandler(e.key)
     }
 
     return <Menu

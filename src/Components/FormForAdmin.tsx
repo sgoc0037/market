@@ -59,7 +59,8 @@ export const FormForAdmin: React.FC<CollectionCreateFormProps> = ({
                                 price: values.price,
                                 type: values.type,
                                 id,
-                                name: values.name
+                                name: values.name,
+                                img: ''
                             }
                         }
                         form.resetFields();

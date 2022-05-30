@@ -32,6 +32,9 @@ const ProductsSlice = createSlice({
             state.brands.push(action.payload)
         },
         setDevices: (state, action: PayloadAction<devicesType>) => {
+            if (action.payload.img.length === 0) {
+                action.payload.img = image
+            }
             state.devices.push(action.payload)
         }
     }
