@@ -17,6 +17,9 @@ export const Products = () => {
     const [currentDevices, setCurrentDevices] = useState<Array<devicesType>>(devices)
 
     let filterForDevices = (value: string, attr: attr): Array<devicesType> => {
+        if (value === 'Любой') {
+            return devices
+        }
         return devices.filter((item: devicesType) => {
             if (item[attr] === value)
                 return item
@@ -46,7 +49,7 @@ export const Products = () => {
             defaultSelectedKeys={['0']}
             selectedKeys={[value]}
         />
-        <Brands brandHandler={brandHandler}/>
+        <Brands brandHandler={brandHandler} />
         <PackCard props={currentDevices} />
     </div>
 }

@@ -1,8 +1,9 @@
 import { ArrowRightOutlined, PlusCircleOutlined } from "@ant-design/icons"
 import { Button, Card } from "antd"
-import React, { FC } from "react"
+import React, { FC, useEffect, useState } from "react"
 import { Link } from "react-router-dom"
-import { useAppSelector } from "../app/hooks"
+import { useAppDispatch } from "../app/hooks"
+import { addToBasket } from "../Reducers/BasketSlice"
 import { devicesType } from "../Types/ProductsSliceType"
 import style from './Styles/PackCard.module.css'
 
@@ -14,23 +15,20 @@ interface packCardType {
 
 export const PackCard: FC<packCardType> = ({ props }) => {
 
-    const defaultProps = useAppSelector(state => state.products.devices)
+    const [value, setValue] = useState<devicesType>()
+    const dispatch = useAppDispatch()
 
-    if (props.length === 0) {
-        props = defaultProps
-    }
-
-    const clickHandler = (e: any) => {
-        console.log(e)
-    }
+    useEffect(() => {
+        value &&
+            dispatch(addToBasket(value))
+    }, [value])
 
     return <div className={style.packCard}>
-        {props.map(({ id, name, price, img }) => {
+        {props.map(({ id, name, price, img, brand, type }) => {
 
             return <Card
-                onClick={clickHandler}
                 actions={[
-                    <Button icon={<PlusCircleOutlined />} />,
+                    <Button onClick={() => setValue({ brand, id, img, name, price, type })} icon={<PlusCircleOutlined />} />,
                     <Link to={name} key={id}><ArrowRightOutlined /></Link>
                 ]}
                 className={style.packCard__card}
