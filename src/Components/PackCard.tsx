@@ -4,6 +4,7 @@ import React, { FC, useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { useAppDispatch } from "../app/hooks"
 import { addToBasket } from "../Reducers/BasketSlice"
+import { basketMain } from "../Types/BasketSliceType"
 import { devicesType } from "../Types/ProductsSliceType"
 import style from './Styles/PackCard.module.css'
 
@@ -24,7 +25,7 @@ export const PackCard: FC<packCardType> = ({ props }) => {
     }, [value])
 
     return <div className={style.packCard}>
-        {props.map(({ id, name, price, img, brand, type }) => {
+        {props.map(({ brand, id, img, name, price, type }) => {
 
             return <Card
                 actions={[
