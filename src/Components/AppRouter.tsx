@@ -8,6 +8,7 @@ import { Default } from '../pages/Default';
 import { Products } from '../pages/Products';
 import { Shop } from '../pages/Shop';
 import { path } from '../Types/RoutesType';
+import { DeleteFormForAdmin } from './DeleteFormForAdmin';
 
 export const AppRouter = () => {
 
@@ -23,6 +24,7 @@ export const AppRouter = () => {
                     <Route path={`${path.BASKET}/:name`} element={<Shop />} />
                     <Route path={path.PRODUCTS} element={<Products />} />
                     <Route path={`${path.PRODUCTS}/:name`} element={<Shop />} />
+                    <Route path={path.DELETE} element={<DeleteFormForAdmin />} />
                 </>
             }
             {!isAuth &&

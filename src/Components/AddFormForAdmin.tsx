@@ -9,7 +9,7 @@ interface CollectionCreateFormProps {
     onCancel: () => void;
 }
 
-export const FormForAdmin: React.FC<CollectionCreateFormProps> = ({
+export const AddFormForAdmin: React.FC<CollectionCreateFormProps> = ({
     visible,
     onCreate,
     onCancel,

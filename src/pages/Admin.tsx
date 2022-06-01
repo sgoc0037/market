@@ -1,9 +1,11 @@
 import { Button } from 'antd'
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { useAppDispatch } from '../app/hooks'
-import { FormForAdmin } from '../Components/FormForAdmin'
+import { AddFormForAdmin } from '../Components/AddFormForAdmin'
 import { setBrands, setDevices, setProductsType } from '../Reducers/ProductsSlice'
 import { formData, modeForm } from '../Types/FormType'
+import { path } from '../Types/RoutesType'
 
 export const Admin = () => {
 
@@ -40,7 +42,7 @@ export const Admin = () => {
             >
                 Редактирование
             </Button>
-            <FormForAdmin
+            <AddFormForAdmin
                 visible={visible}
                 onCreate={onCreate}
                 onCancel={() => {
@@ -48,6 +50,8 @@ export const Admin = () => {
                 }}
             />
         </div>
-        <Button style={{ background: 'crimson' }} type='primary'>Удаление</Button>
+        <Button 
+        style={{ background: 'crimson' }} 
+        type='primary'><Link to={`../${path.DELETE}`}>Удаление</Link></Button>
     </div>
 }

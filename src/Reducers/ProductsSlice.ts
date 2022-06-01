@@ -36,10 +36,13 @@ const ProductsSlice = createSlice({
                 action.payload.img = image
             }
             state.devices.push(action.payload)
+        },
+        removeDevice: (state, action: PayloadAction<devicesType>) => {
+            console.log(action.payload)
         }
     }
 })
 
 
-export const { setProductsType, setBrands, setDevices } = ProductsSlice.actions
+export const { setProductsType, setBrands, setDevices,removeDevice } = ProductsSlice.actions
 export default ProductsSlice.reducer

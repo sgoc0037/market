@@ -16,13 +16,10 @@ const BasketSlice = createSlice({
             state.basket.push({...action.payload,amount})
         },
         changeAmount: (state, action: PayloadAction<changeAmountType>) => {
-            const preparation:Array<basketMain> = state.basket.filter((item: basketMain) => {
-                return item.id === action.payload.id
-            })
-            preparation[0].amount = action.payload.amount
+            console.log(action.payload)
         }
     }
 })
 
-export const { addToBasket } = BasketSlice.actions
+export const { addToBasket,changeAmount } = BasketSlice.actions
 export default BasketSlice.reducer
