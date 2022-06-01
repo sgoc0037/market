@@ -20,14 +20,17 @@ export const HeaderMenu: React.FC = () => {
     }
 
 
-    const items: MenuItem[] = [
-        getItem(<Link to={path.ADMIN}>Admin</Link>, '1'),
-        getItem(<Link to={path.LOGIN}>Login</Link>, '2'),
-        getItem(<Link to={path.PRODUCTS}>Products</Link>, '3'),
-        getItem(<Link to={path.BASKET}>Basket</Link>, '4'),
-    ];
-
-    isAuth && items.push(getItem(<Button onClick={logoutHandler} type='primary'>Выйти</Button>, 'logout'))
+    const items: MenuItem[] = isAuth
+        ? [
+            getItem(<Link to={path.ADMIN}>Admin</Link>, '1'),
+            getItem(<Link to={path.PRODUCTS}>Products</Link>, '3'),
+            getItem(<Link to={path.BASKET}>Basket</Link>, '4'),
+            getItem(<Button onClick={logoutHandler} type='primary'>Выйти</Button>, 'logout')
+        ]
+        : [
+            getItem(<Link to={path.LOGIN}>Login</Link>, '2'),
+            getItem(<Link to={path.PRODUCTS}>Products</Link>, '3'),
+        ]
 
     return (
         <Header>
