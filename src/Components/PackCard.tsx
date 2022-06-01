@@ -11,7 +11,7 @@ import style from './Styles/PackCard.module.css'
 const { Meta } = Card
 
 interface packCardType {
-    props: Array<devicesType>
+    props: Array<devicesType> | Array<basketMain>
 }
 
 export const PackCard: FC<packCardType> = ({ props }) => {
@@ -25,20 +25,32 @@ export const PackCard: FC<packCardType> = ({ props }) => {
     }, [value])
 
     return <div className={style.packCard}>
-        {props.map(({ brand, id, img, name, price, type }) => {
+        {props.map(({ brand, id, img, name, price, type, amount }) => {
+
+            const link = <Link to={name} key={id}><ArrowRightOutlined /></Link>
+
+            const actions: Array<React.ReactNode> = (!amount)
+                ? [<Button
+                    onClick={() => setValue({ brand, id, img, name, price, type })}
+                    icon={<PlusCircleOutlined />} />,
+                    link]
+                : [link]
+
 
             return <Card
-                actions={[
-                    <Button onClick={() => setValue({ brand, id, img, name, price, type })} icon={<PlusCircleOutlined />} />,
-                    <Link to={name} key={id}><ArrowRightOutlined /></Link>
-                ]}
+                actions={actions}
                 className={style.packCard__card}
                 hoverable
                 key={id}
                 cover={<img alt={name} src={img} />}
             >
-                <span>Price:{price}</span>
-                <Meta title={name} />
+                <div className={style.card__content}>
+                    <Meta title={name} />
+                    <span>Price:{price}</span>
+                    {amount &&
+                        <span>Кол-во:{amount}</span>
+                    }
+                </div>
             </Card>
         })
         }

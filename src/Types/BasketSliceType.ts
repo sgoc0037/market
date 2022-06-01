@@ -1,7 +1,6 @@
 import { devicesType } from './ProductsSliceType';
 
-export interface basketMain {
-    deviceToBasket: devicesType
+export interface basketMain extends devicesType { 
     amount: number
 }
 

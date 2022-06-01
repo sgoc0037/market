@@ -21,7 +21,8 @@ export const Shop = () => {
     })
 
     const clickHandler = (e: MouseEvent<HTMLButtonElement>) => {
-        dispatch(addToBasket(props))
+        props &&
+            dispatch(addToBasket(props))
     }
 
     return <>
@@ -31,7 +32,10 @@ export const Shop = () => {
                 <h2>{name}</h2>
                 <div style={{ display: 'flex', justifyContent: 'space-around' }}>
                     <span>Цена:{props.price}</span>
-                    <Button type='primary' icon={<PlusCircleOutlined />}>Добавить в корзину</Button>
+                    <Button
+                    onClick={clickHandler} 
+                    type='primary' 
+                    icon={<PlusCircleOutlined />}>Добавить в корзину</Button>
                 </div>
                 <ul>Характеристики:
                     <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.

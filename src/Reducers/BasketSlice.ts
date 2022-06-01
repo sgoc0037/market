@@ -12,15 +12,12 @@ const BasketSlice = createSlice({
     name: 'Basket',
     reducers: {
         addToBasket: (state, action: PayloadAction<devicesType>) => {
-            const preparation: basketMain = {
-                deviceToBasket: action.payload,
-                amount: 1
-            }
-            state.basket.push(preparation)
+            const amount = 1
+            state.basket.push({...action.payload,amount})
         },
         changeAmount: (state, action: PayloadAction<changeAmountType>) => {
             const preparation:Array<basketMain> = state.basket.filter((item: basketMain) => {
-                return item.deviceToBasket.id === action.payload.id
+                return item.id === action.payload.id
             })
             preparation[0].amount = action.payload.amount
         }

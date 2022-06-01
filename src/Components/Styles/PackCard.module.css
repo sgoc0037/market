@@ -11,3 +11,7 @@
     width: 25%;
     margin: 5px;
 }
+.card__content{
+    display: flex;
+    flex-direction: column;
+}
