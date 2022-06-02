@@ -25,6 +25,6 @@ export const Basket = () => {
     return <div>
         {basket.length === 0
             ? <span>Тут пусто</span>
-            : <PackCard props={basket} addAmount={setValue} />}
+            : <PackCard data={basket} addAmount={setValue} />}
     </div>
 }

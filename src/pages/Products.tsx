@@ -51,6 +51,6 @@ export const Products = () => {
             selectedKeys={[value]}
         />
         <Brands brandHandler={brandHandler} />
-        <PackCard props={currentDevices} />
+        <PackCard data={currentDevices} />
     </div>
 }

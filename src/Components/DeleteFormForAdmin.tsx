@@ -20,6 +20,6 @@ export const DeleteFormForAdmin = () => {
     }, [value])
 
     return <div>
-        <PackCard removeProduct={setValue} props={devices} />
+        <PackCard removeProduct={setValue} data={devices} />
     </div>
 }
