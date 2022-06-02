@@ -17,3 +17,8 @@ export interface productsSliceType {
     brands: Array<mainProductsType>
     devices: Array<devicesType>
 }
+
+export interface removeDeviceType  {
+    id: string
+    index: number
+}

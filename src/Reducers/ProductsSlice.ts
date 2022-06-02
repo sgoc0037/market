@@ -1,3 +1,4 @@
+import { removeDeviceType } from './../Types/ProductsSliceType';
 import { devicesType, mainProductsType } from '../Types/ProductsSliceType';
 import { PayloadAction } from '@reduxjs/toolkit';
 import { productsSliceType } from '../Types/ProductsSliceType';
@@ -16,8 +17,22 @@ const initialState: productsSliceType = {
         { id: '2', name: 'Apple' },
     ],
     devices: [
-        { id: '1', name: 'dasdasdas', price: 25000, img: image, brand: 'Samsung', type: 'Холодильники' },
-        { id: '2', name: 'applemakentosh', price: 312515, img: image, brand: 'Apple', type: 'Смартфоны' },
+        {
+            id: '1',
+            name: 'dasdasdas',
+            price: 25000,
+            img: image,
+            brand: 'Samsung',
+            type: 'Холодильники'
+        },
+        {
+            id: '2',
+            name: 'applemakentosh',
+            price: 312515,
+            img: image,
+            brand: 'Apple',
+            type: 'Смартфоны'
+        },
     ]
 }
 
@@ -37,12 +52,12 @@ const ProductsSlice = createSlice({
             }
             state.devices.push(action.payload)
         },
-        removeDevice: (state, action: PayloadAction<devicesType>) => {
-            console.log(action.payload)
+        removeDevice: (state, action: PayloadAction<removeDeviceType>) => {
+            state.devices.splice(action.payload.index,1)
         }
     }
 })
 
 
-export const { setProductsType, setBrands, setDevices,removeDevice } = ProductsSlice.actions
+export const { setProductsType, setBrands, setDevices, removeDevice } = ProductsSlice.actions
 export default ProductsSlice.reducer

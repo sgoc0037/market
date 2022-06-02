@@ -1,5 +1,5 @@
 import { devicesType } from './../Types/ProductsSliceType';
-import { basketSliceType, basketMain, changeAmountType } from './../Types/BasketSliceType';
+import { basketSliceType, changeAmountType } from './../Types/BasketSliceType';
 
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 

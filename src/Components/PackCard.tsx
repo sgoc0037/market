@@ -12,8 +12,8 @@ const { Meta } = Card
 
 interface packCardType {
     props: Array<devicesType> | Array<basketMain>
-    removeProduct?: (value: devicesType) => void
-    addAmount?: (value:basketStateType) => void
+    removeProduct?: (value: string) => void
+    addAmount?: (value: basketStateType) => void
 }
 
 export const PackCard: FC<packCardType> = ({ props, removeProduct, addAmount }) => {
@@ -34,8 +34,8 @@ export const PackCard: FC<packCardType> = ({ props, removeProduct, addAmount }) 
             const clickHandler = () => {
                 addAmount &&
                     addAmount({ id, amount: 3 })
-                // removeProduct &&
-                //     removeProduct({ brand, id, img, name, price, type })
+                removeProduct &&
+                    removeProduct(id)
             }
 
             const actions: Array<React.ReactNode> = (!amount)
