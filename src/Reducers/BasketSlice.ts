@@ -16,7 +16,7 @@ const BasketSlice = createSlice({
             state.basket.push({...action.payload,amount})
         },
         changeAmount: (state, action: PayloadAction<changeAmountType>) => {
-            console.log(action.payload)
+            state.basket[action.payload.index].amount = action.payload.amount
         }
     }
 })

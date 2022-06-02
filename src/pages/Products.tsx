@@ -21,6 +21,7 @@ export const Products = () => {
             return devices
         }
         return devices.filter((item: devicesType) => {
+            debugger
             if (item[attr] === value)
                 return item
         })

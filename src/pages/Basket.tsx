@@ -3,21 +3,27 @@ import { useDispatch } from 'react-redux'
 import { useAppSelector } from '../app/hooks'
 import { PackCard } from '../Components/PackCard'
 import { changeAmount } from '../Reducers/BasketSlice'
-import { changeAmountType } from '../Types/BasketSliceType'
+import { basketStateType } from '../Types/BasketSliceType'
 
 export const Basket = () => {
 
     const basket = useAppSelector(state => state.basket.basket)
+    const devices = useAppSelector(state => state.products.devices)
+
     const dispatch = useDispatch()
 
-    const [value,setValue] = useState<changeAmountType>()
+    const [value, setValue] = useState<basketStateType>()
 
-    useEffect(()=> {
-        value &&    
-            dispatch(changeAmount(value))
-    },[value])
+    useEffect(() => {
+        if (value) {
+            const index = devices.findIndex((item) => item.id === value.id)
+            dispatch(changeAmount({ ...value, index }))
+        }
+    }, [value])
 
     return <div>
-        {basket.length === 0 ? <span>Тут пусто</span> : <PackCard props={basket} addAmount={setValue}/>}
+        {basket.length === 0
+            ? <span>Тут пусто</span>
+            : <PackCard props={basket} addAmount={setValue} />}
     </div>
 }
