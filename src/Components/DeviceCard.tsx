@@ -21,16 +21,16 @@ export const DeviceCard: FC<deviceCardType> = ({ addAmount, removeProduct, setVa
     const link = <Link to={name} key={id}><ArrowRightOutlined /></Link>
 
     const clickHandler = () => {
-        setValue({ brand, id, img, name, price, type })
         addAmount &&
             addAmount({ id, amount: 3 })
         removeProduct &&
             removeProduct(id)
     }
+    const handlerAddToBasket = () => setValue({ brand, id, img, name, price, type })
 
     const actions: Array<React.ReactNode> = (!amount)
         ? [<Button
-            onClick={clickHandler}
+            onClick={handlerAddToBasket}
             icon={<PlusCircleOutlined />} />,
             link]
         : [link];

@@ -2,15 +2,17 @@ import { ArrowLeftOutlined, PlusCircleOutlined } from '@ant-design/icons'
 import { Button, Spin } from 'antd'
 import React, { FC, MouseEvent } from 'react'
 import { useDispatch } from 'react-redux'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { useAppSelector } from '../app/hooks'
 import { addToBasket } from '../Reducers/BasketSlice'
 import { devicesType } from '../Types/ProductsSliceType'
 
 export const Shop = () => {
 
-    const { name } = useParams()
     const navigate = useNavigate()
+
+    const location = useLocation().pathname.split('/') //<=== [0: "",1: 'basket' or 'products',2: "here name for device"]
+    const name = location[2]
 
     const goBack = () => navigate(-1)
 
@@ -31,15 +33,18 @@ export const Shop = () => {
     return <>
         {props &&
             <>
-                <Button onClick={goBack} icon={<ArrowLeftOutlined />}/>
+                <Button onClick={goBack} icon={<ArrowLeftOutlined />} />
                 <img style={{ width: 256 }} src={props.img} alt={name} />
                 <h2>{name}</h2>
                 <div style={{ display: 'flex', justifyContent: 'space-around' }}>
                     <span>Цена:{props.price}</span>
-                    <Button
-                        onClick={clickHandler}
-                        type='primary'
-                        icon={<PlusCircleOutlined />}>Добавить в корзину</Button>
+                    {location[1] === 'products'
+                        ? <Button
+                            onClick={clickHandler}
+                            type='primary'
+                            icon={<PlusCircleOutlined />}>Добавить в корзину</Button>
+                        : <span>place for amount</span>
+                    }
                 </div>
                 <ul>Характеристики:
                     <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.
