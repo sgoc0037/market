@@ -11,6 +11,10 @@ export const Basket = () => {
     const basket = useAppSelector(state => state.basket.basket)
     const devices = useAppSelector(state => state.products.devices)
 
+    const totalAmount = basket.map((item) => {
+        return item.price * item.amount
+    }).reduce((x, y) => x + y)
+
     const dispatch = useDispatch()
 
     const [value, setValue] = useState<basketStateType>()
@@ -26,5 +30,6 @@ export const Basket = () => {
         {basket.length === 0
             ? <span>Тут пусто</span>
             : <PackCard data={basket} addAmount={setValue} />}
+        <span>Сумма всей корзины: <b>{totalAmount}</b></span>
     </div>
 }
