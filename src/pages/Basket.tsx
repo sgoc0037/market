@@ -8,12 +8,21 @@ import { getIndex } from '../util/util'
 
 export const Basket = () => {
 
+
     const basket = useAppSelector(state => state.basket.basket)
     const devices = useAppSelector(state => state.products.devices)
 
-    const totalAmount = basket.map((item) => {
-        return item.price * item.amount
-    }).reduce((x, y) => x + y)
+    const totalAmount = () => {
+        if (basket.length > 1) {
+            return basket.map((item) => {
+                return item.price * item.amount
+            }).reduce((x, y) => x + y)
+        } else if (basket.length === 1) {
+            return basket[0].price
+        }
+        return 0
+    }
+
 
     const dispatch = useDispatch()
 
@@ -29,7 +38,7 @@ export const Basket = () => {
     return <div>
         {basket.length === 0
             ? <span>Тут пусто</span>
-            : <PackCard data={basket} addAmount={setValue} />}
-        <span>Сумма всей корзины: <b>{totalAmount}</b></span>
+            : <> <PackCard data={basket} addAmount={setValue} />
+                <span>Сумма всей корзины: <b>{totalAmount()}</b></span></>}
     </div>
 }

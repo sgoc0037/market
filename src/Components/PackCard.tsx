@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from "react"
-import { useAppDispatch } from "../app/hooks"
+import { useAppDispatch, useAppSelector } from "../app/hooks"
 import { addToBasket } from "../Reducers/BasketSlice"
 import { basketMain, basketStateType } from "../Types/BasketSliceType"
 import { devicesType } from "../Types/ProductsSliceType"
@@ -14,12 +14,21 @@ interface packCardType {
 
 export const PackCard: FC<packCardType> = (props) => {
 
+    const basket = useAppSelector(state => state.basket.basket)
     const [value, setValue] = useState<devicesType>()
     const dispatch = useAppDispatch()
 
+    const guardianForBasket = (data: devicesType) => {
+        let preparation = basket.find(item => item.id === value?.id)
+
+        if (!preparation) {
+            dispatch(addToBasket(data))
+        }
+    }
+
     useEffect(() => {
         value &&
-            dispatch(addToBasket(value))
+            guardianForBasket(value)
     }, [value])
 
     return <div className={style.packCard}>
@@ -30,7 +39,7 @@ export const PackCard: FC<packCardType> = (props) => {
                 setValue={setValue}
                 removeProduct={props.removeProduct}
                 addAmount={props.addAmount}
-                
+
             />
         })
         }
