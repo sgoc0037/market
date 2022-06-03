@@ -29,3 +29,7 @@ export const getIndex = (arr: Array<devicesType>, value: string): number =>
 export const getDevice = (arr: Array<devicesType | basketMain>, name: string) => {
     return arr.find((item) => name === item.name)
 }
+
+export const searchHimself = (arr:Array<basketMain>,value:string)=> {
+    return arr.some(item=> item.id === value)
+}

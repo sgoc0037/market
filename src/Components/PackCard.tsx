@@ -39,7 +39,6 @@ export const PackCard: FC<packCardType> = (props) => {
                 setValue={setValue}
                 removeProduct={props.removeProduct}
                 addAmount={props.addAmount}
-
             />
         })
         }
