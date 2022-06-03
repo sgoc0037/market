@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useAppSelector } from '../app/hooks'
 import { addToBasket } from '../Reducers/BasketSlice'
-import { devicesType } from '../Types/ProductsSliceType'
+import { getDevice } from '../util/util'
 
 export const Shop = () => {
 
@@ -13,37 +13,39 @@ export const Shop = () => {
 
     const location = useLocation().pathname.split('/') //<=== [0: "",1: 'basket' or 'products',2: "here name for device"]
     const name = location[2]
+    const typePage = location[1]
 
     const goBack = () => navigate(-1)
 
     const devices = useAppSelector(state => state.products.devices)
+    const basket = useAppSelector(state => state.basket.basket)
+
     const dispatch = useDispatch()
 
-    const props = devices.find((item: devicesType) => {
-        if (name === item.name) {
-            return item
-        }
-    })
+    const data = (typePage === 'products')
+        ? getDevice(devices, name) : getDevice(basket, name)
 
     const clickHandler = (e: MouseEvent<HTMLButtonElement>) => {
-        props &&
-            dispatch(addToBasket(props))
+        data &&
+            dispatch(addToBasket(data))
     }
 
     return <>
-        {props &&
+        {data &&
             <>
                 <Button onClick={goBack} icon={<ArrowLeftOutlined />} />
-                <img style={{ width: 256 }} src={props.img} alt={name} />
+                <img style={{ width: 256 }} src={data.img} alt={name} />
                 <h2>{name}</h2>
                 <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-                    <span>Цена:{props.price}</span>
-                    {location[1] === 'products'
-                        ? <Button
+                    <span>Цена:{data.price}</span>
+                    {typePage === 'products' &&
+                        <Button
                             onClick={clickHandler}
                             type='primary'
                             icon={<PlusCircleOutlined />}>Добавить в корзину</Button>
-                        : <span>place for amount</span>
+                    }
+                    {typePage === 'basket' &&
+                        <span>{data.amount}</span>
                     }
                 </div>
                 <ul>Характеристики:
@@ -54,7 +56,7 @@ export const Shop = () => {
                 </ul>
             </>
         }
-        {!props &&
+        {!data &&
             <Spin />
         }
     </>
