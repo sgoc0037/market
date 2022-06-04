@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useAppSelector } from "../app/hooks";
 import { removeDevice } from "../Reducers/ProductsSlice";
 import { getIndex } from "../util/util";
-import { PackCard } from "./PackCard";
+import { PackCard } from "./Cards/PackCard";
 
 export const DeleteFormForAdmin = () => {
 

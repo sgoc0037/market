@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useAppSelector } from '../app/hooks'
-import { PackCard } from '../Components/PackCard'
+import { CardBasket } from '../Components/Cards/CardForBasket'
 import { changeAmount } from '../Reducers/BasketSlice'
 import { basketStateType } from '../Types/BasketSliceType'
 import { getIndex } from '../util/util'
+import style from './Styles/Basket.module.css'
 
 export const Basket = () => {
 
@@ -35,10 +36,17 @@ export const Basket = () => {
         }
     }, [value])
 
-    return <div>
-        {basket.length === 0
-            ? <span>Тут пусто</span>
-            : <> <PackCard data={basket} addAmount={setValue} />
-                <span>Сумма всей корзины: <b>{totalAmount()}</b></span></>}
-    </div>
+    return <div className={style.basket}>
+        {basket.length === 0 &&
+            < span > Тут пусто</span>
+        }
+        {basket.length > 0 &&
+            <>
+                {basket.map(item => {
+                    return <CardBasket addAmount={setValue} data={item} key={item.id} />
+                })}
+                <span className={style.basket__total}>Сумма всей корзины: <b>{totalAmount()}</b></span>
+            </>
+        }
+    </div >
 }

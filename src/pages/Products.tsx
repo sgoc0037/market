@@ -2,7 +2,7 @@ import { Menu, MenuProps } from 'antd'
 import React, { useState } from 'react'
 import { useAppSelector } from '../app/hooks'
 import { Brands } from '../Components/BrandsMenu';
-import { PackCard } from '../Components/PackCard';
+import { PackCard } from '../Components/Cards/PackCard';
 import { devicesType } from '../Types/ProductsSliceType';
 import { getItem } from '../util/util';
 import style from './Styles/Products.module.css'
