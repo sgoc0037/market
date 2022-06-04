@@ -23,11 +23,15 @@ export function getItem(
     } as MenuItem;
 }
 
-export const getIndex = (arr: Array<devicesType>, value: string): number =>
+export const getIndex = (arr: Array<devicesType | basketMain>, value: string): number =>
     arr.findIndex((item) => item.id === value)
 
-export const getDevice = (arr: Array<devicesType | basketMain>, name: string) => {
-    return arr.find((item) => name === item.name)
+export const getDevice = (arr: Array<devicesType | basketMain>, name: string):devicesType | basketMain => {
+    const resolve = arr.find((item) => name === item.name)
+    if(resolve === undefined) {
+        return arr[0]
+    }
+    return resolve
 }
 
 export const searchHimself = (arr:Array<basketMain>,value:string)=> {

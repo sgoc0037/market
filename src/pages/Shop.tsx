@@ -4,6 +4,7 @@ import React, { FC, MouseEvent } from 'react'
 import { useDispatch } from 'react-redux'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useAppSelector } from '../app/hooks'
+import { Amount } from '../Components/Amount'
 import { addToBasket } from '../Reducers/BasketSlice'
 import { getDevice } from '../util/util'
 
@@ -19,15 +20,13 @@ export const Shop = () => {
 
     const devices = useAppSelector(state => state.products.devices)
     const basket = useAppSelector(state => state.basket.basket)
-
     const dispatch = useDispatch()
 
     const data = (typePage === 'products')
-        ? getDevice(devices, name) : getDevice(basket, name)
+        ? getDevice(devices, name) : getDevice(basket, name);
 
     const clickHandler = (e: MouseEvent<HTMLButtonElement>) => {
-        data &&
-            dispatch(addToBasket(data))
+        dispatch(addToBasket(data))
     }
 
     return <>
@@ -45,7 +44,7 @@ export const Shop = () => {
                             icon={<PlusCircleOutlined />}>Добавить в корзину</Button>
                     }
                     {typePage === 'basket' &&
-                        <span>{data.amount}</span>
+                        <Amount amount={+data.amount} id={data.id} />
                     }
                 </div>
                 <ul>Характеристики:

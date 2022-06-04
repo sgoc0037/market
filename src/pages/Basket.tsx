@@ -45,8 +45,9 @@ export const Basket = () => {
                 {basket.map(item => {
                     return <CardBasket addAmount={setValue} data={item} key={item.id} />
                 })}
-                <span className={style.basket__total}>Сумма всей корзины: <b>{totalAmount()}</b></span>
+                <span className={style.basket__total}
+                >Сумма всей корзины: <b>{totalAmount()}</b></span>
             </>
         }
-    </div >
+    </div>
 }

@@ -22,12 +22,7 @@ export const CardBasket: FC<CardBasketType> = ({ addAmount, data }) => {
             link
         ]
 
-    const clickHandler = () => {
-        addAmount({ id, amount: 3 })
-    }
-
     return <Card
-        onClick={clickHandler}
         actions={actions}
         className={style.packCard__card}
         key={id}
