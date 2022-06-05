@@ -14,7 +14,7 @@ export const Basket = () => {
     const devices = useAppSelector(state => state.products.devices)
 
     const dispatch = useDispatch()
-
+    
     const [value, setValue] = useState<basketStateType>()
     const [totalAmount, setTotalAmount] = useState<number>(0)
 

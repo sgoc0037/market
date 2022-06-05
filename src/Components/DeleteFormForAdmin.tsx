@@ -4,6 +4,7 @@ import { useAppSelector } from "../app/hooks";
 import { removeDevice } from "../Reducers/ProductsSlice";
 import { getIndex } from "../util/util";
 import { PackCard } from "./Cards/PackCard";
+import { Goback } from "./goBack";
 
 export const DeleteFormForAdmin = () => {
 

@@ -1,8 +1,8 @@
-import { ArrowLeftOutlined, PlusCircleOutlined } from '@ant-design/icons'
+import { PlusCircleOutlined } from '@ant-design/icons'
 import { Button, Spin } from 'antd'
 import React, { FC, MouseEvent } from 'react'
 import { useDispatch } from 'react-redux'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import { useAppSelector } from '../app/hooks'
 import { Amount } from '../Components/Amount'
 import { addToBasket } from '../Reducers/BasketSlice'
@@ -10,13 +10,9 @@ import { getDevice } from '../util/util'
 
 export const Shop = () => {
 
-    const navigate = useNavigate()
-
     const location = useLocation().pathname.split('/') //<=== [0: "",1: 'basket' or 'products',2: "here name for device"]
     const name = location[2]
     const typePage = location[1]
-
-    const goBack = () => navigate(-1)
 
     const devices = useAppSelector(state => state.products.devices)
     const basket = useAppSelector(state => state.basket.basket)
@@ -32,7 +28,6 @@ export const Shop = () => {
     return <>
         {data &&
             <>
-                <Button onClick={goBack} icon={<ArrowLeftOutlined />} />
                 <img style={{ width: 256 }} src={data.img} alt={name} />
                 <h2>{name}</h2>
                 <div style={{ display: 'flex', justifyContent: 'space-around' }}>
