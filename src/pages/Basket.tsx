@@ -13,21 +13,10 @@ export const Basket = () => {
     const basket = useAppSelector(state => state.basket.basket)
     const devices = useAppSelector(state => state.products.devices)
 
-    const totalAmount = () => {
-        if (basket.length > 1) {
-            return basket.map((item) => {
-                return item.price * item.amount
-            }).reduce((x, y) => x + y)
-        } else if (basket.length === 1) {
-            return basket[0].price
-        }
-        return 0
-    }
-
-
     const dispatch = useDispatch()
 
     const [value, setValue] = useState<basketStateType>()
+    const [totalAmount, setTotalAmount] = useState<number>(0)
 
     useEffect(() => {
         if (value) {
@@ -35,6 +24,18 @@ export const Basket = () => {
             dispatch(changeAmount({ ...value, index }))
         }
     }, [value])
+
+    useEffect(() => {
+
+        if (basket.length > 1) {
+            const answer = basket.map((item) => item.price * item.amount)
+                .reduce((x, y) => x + y)
+            setTotalAmount(answer)
+        } else if (basket.length === 1) {
+            setTotalAmount(basket[0].price * basket[0].amount)
+        }
+
+    }, [basket])
 
     return <div className={style.basket}>
         {basket.length === 0 &&
@@ -46,7 +47,7 @@ export const Basket = () => {
                     return <CardBasket addAmount={setValue} data={item} key={item.id} />
                 })}
                 <span className={style.basket__total}
-                >Сумма всей корзины: <b>{totalAmount()}</b></span>
+                >Сумма всей корзины: <b>{totalAmount}</b></span>
             </>
         }
     </div>

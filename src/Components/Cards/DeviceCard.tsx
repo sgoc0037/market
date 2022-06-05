@@ -3,16 +3,15 @@ import { Button, Card } from "antd"
 import Meta from "antd/lib/card/Meta"
 import React, { FC, useState } from "react"
 import { Link } from "react-router-dom"
-import { useAppSelector } from "../app/hooks"
-import { basketMain, basketStateType } from "../Types/BasketSliceType"
-import { devicesType } from "../Types/ProductsSliceType"
-import { searchHimself } from "../util/util"
-import style from './Styles/PackCard.module.css'
+import { useAppSelector } from "../../app/hooks"
+import { devicesType } from "../../Types/ProductsSliceType"
+import { searchHimself } from "../../util/util"
+import style from '../Styles/PackCard.module.css'
 
 interface deviceCardType {
     removeProduct?: (value: string) => void
     setValue: (value: devicesType) => void
-    data: devicesType | basketMain
+    data: devicesType
 }
 
 type inBasketType = boolean
@@ -27,7 +26,6 @@ export const DeviceCard: FC<deviceCardType> = ({ removeProduct, setValue, data }
     const link = <Link to={name} key={id}><ArrowRightOutlined /></Link>
 
     const clickHandler = () => {
-
         removeProduct &&
             removeProduct(id)
     }

@@ -26,14 +26,16 @@ export function getItem(
 export const getIndex = (arr: Array<devicesType | basketMain>, value: string): number =>
     arr.findIndex((item) => item.id === value)
 
-export const getDevice = (arr: Array<devicesType | basketMain>, name: string):devicesType | basketMain => {
+export const getDevice = (
+    arr: Array<devicesType | basketMain>, name: string
+): devicesType | basketMain => {
     const resolve = arr.find((item) => name === item.name)
-    if(resolve === undefined) {
+    if (resolve === undefined) {
         return arr[0]
     }
     return resolve
 }
 
-export const searchHimself = (arr:Array<basketMain>,value:string)=> {
-    return arr.some(item=> item.id === value)
+export const searchHimself = (arr: Array<basketMain>, value: string) => {
+    return arr.some(item => item.id === value)
 }

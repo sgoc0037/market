@@ -13,12 +13,12 @@ export const Amount: FC<AmountType> = ({ id, amount }) => {
 
     const basket = useAppSelector(state => state.basket.basket)
     const dispatch = useAppDispatch()
-
+    
     const index = getIndex(basket, id)
 
     const changeHandler = (value:number) => {
         dispatch(changeAmount({ index, id, amount: value }))
     }
 
-    return <InputNumber value={amount} onChange={changeHandler} />
+    return <InputNumber min={0} value={amount} onChange={changeHandler} />
 }
