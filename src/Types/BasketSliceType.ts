@@ -16,3 +16,5 @@ export interface basketStateType {
 export interface changeAmountType extends basketStateType {
     index: number
 }
+
+

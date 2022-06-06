@@ -1,5 +1,5 @@
-import { ArrowRightOutlined, PlusCircleOutlined } from "@ant-design/icons"
-import { Button, Card } from "antd"
+import { ArrowRightOutlined, PlusOutlined } from "@ant-design/icons"
+import { Button, Card, Tooltip } from "antd"
 import Meta from "antd/lib/card/Meta"
 import React, { FC, useState } from "react"
 import { Link } from "react-router-dom"
@@ -36,9 +36,14 @@ export const DeviceCard: FC<deviceCardType> = ({ removeProduct, setValue, data }
 
     const actions: Array<React.ReactNode> =
         [
-            <Button
-                onClick={handlerAddToBasket}
-                icon={<PlusCircleOutlined />} />,
+            <Tooltip title='Добавить в корзину'>
+                <Button
+                    type="primary"
+                    shape="circle"
+                    style={{ border: 'none' }}
+                    onClick={handlerAddToBasket}
+                    icon={<PlusOutlined />} />
+            </Tooltip>,
             link
         ]
 

@@ -13,7 +13,10 @@ const BasketSlice = createSlice({
     reducers: {
         addToBasket: (state, action: PayloadAction<devicesType>) => {
             const amount = 1
-            state.basket.push({...action.payload,amount})
+            state.basket.push({ ...action.payload, amount })
+        },
+        deleteFromBasket: (state, action: PayloadAction<number>) => {
+            state.basket.splice(action.payload, 1)
         },
         changeAmount: (state, action: PayloadAction<changeAmountType>) => {
             state.basket[action.payload.index].amount = action.payload.amount
@@ -21,5 +24,5 @@ const BasketSlice = createSlice({
     }
 })
 
-export const { addToBasket,changeAmount } = BasketSlice.actions
+export const { addToBasket, deleteFromBasket, changeAmount } = BasketSlice.actions
 export default BasketSlice.reducer
