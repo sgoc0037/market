@@ -3,16 +3,15 @@ import { Button, Card, Tooltip } from "antd";
 import { Meta } from "antd/lib/list/Item";
 import React, { FC } from "react";
 import { Link } from "react-router-dom";
-import { basketMain, basketStateType } from "../../Types/BasketSliceType";
+import { basketMain } from "../../Types/BasketSliceType";
 import style from '../Styles/PackCard.module.css'
 
 interface CardBasketType {
-    addAmount: (value: basketStateType) => void
     deleteFromBasket: (id:string)=> void
     data: basketMain
 }
 
-export const CardBasket: FC<CardBasketType> = ({ addAmount, data,deleteFromBasket }) => {
+export const CardBasket: FC<CardBasketType> = ({ data,deleteFromBasket }) => {
 
     const { brand, id, img, name, price, type, amount } = data
 

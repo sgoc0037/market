@@ -1,6 +1,8 @@
-import { Form, Input, InputNumber, Modal, Radio, RadioChangeEvent } from "antd";
+import { Form, Input, InputNumber, Modal, Radio, RadioChangeEvent, Select } from "antd";
+import TextArea from "antd/lib/input/TextArea";
 import { nanoid } from "nanoid";
 import { useState } from "react";
+import { useAppSelector } from "../app/hooks";
 import { formData, modeForm, } from "../Types/FormType";
 
 interface CollectionCreateFormProps {
@@ -14,6 +16,21 @@ export const AddFormForAdmin: React.FC<CollectionCreateFormProps> = ({
     onCreate,
     onCancel,
 }) => {
+
+    const brands = useAppSelector(state => state.products.brands).slice(1)
+    const types = useAppSelector(state => state.products.productsType).slice(1)
+
+    const optionBrands = brands.map(item => {
+        return {
+            value: item.name
+        }
+    })
+
+    const optionTypes = types.map(item => {
+        return {
+            value: item.name
+        }
+    })
 
     const optionModeForm = [
         {
@@ -114,25 +131,23 @@ export const AddFormForAdmin: React.FC<CollectionCreateFormProps> = ({
                         >
                             <Input />
                         </Form.Item>
-                        <Form.Item
-                            name='brand'
-                            label="Бренд"
-                            rules={[{ required: true, message: 'Укажите производителя' }]}
-                        >
-                            <Input />
+                        <Form.Item name="brand" label="Бренд" rules={[{ required: true, message: 'Укажите производителя' }]}>
+                            <Select
+                                options={optionBrands}
+                                placeholder="Выберите бренд"
+                                allowClear />
                         </Form.Item>
-                        <Form.Item
-                            name='type'
-                            label="Категория продукта"
-                            rules={[{ required: true, message: 'Обязательное поле' }]}
-                        >
-                            <Input />
+                        <Form.Item name="type" label="Категория товара" rules={[{ required: true, message: 'Укажите категорию товара' }]}>
+                            <Select
+                                options={optionTypes}
+                                placeholder="Выберите категорию"
+                                allowClear />
                         </Form.Item>
                         <Form.Item name="description" label="Описание">
-                            <Input type="textarea" />
+                            <TextArea />
                         </Form.Item>
                         <Form.Item name="price" label='Цена'>
-                            <InputNumber type='number' min={1} max={10} />
+                            <InputNumber type='number' min={0} />
                         </Form.Item>
                     </>
                 }

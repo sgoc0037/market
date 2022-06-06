@@ -13,10 +13,9 @@ export const Amount: FC<AmountType> = ({ id, amount }) => {
 
     const basket = useAppSelector(state => state.basket.basket)
     const dispatch = useAppDispatch()
-    
-    const index = getIndex(basket, id)
 
     const changeHandler = (value:number) => {
+        const index = getIndex(basket, id)
         dispatch(changeAmount({ index, id, amount: value }))
     }
 
