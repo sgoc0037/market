@@ -40,10 +40,10 @@ const ProductsSlice = createSlice({
     initialState,
     name: 'Products',
     reducers: {
-        setProductsType: (state, action: PayloadAction<mainProductsType>) => {
+        addProductsType: (state, action: PayloadAction<mainProductsType>) => {
             state.productsType.push(action.payload)
         },
-        setBrands: (state, action: PayloadAction<mainProductsType>) => {
+        addBrands: (state, action: PayloadAction<mainProductsType>) => {
             state.brands.push(action.payload)
         },
         setDevices: (state, action: PayloadAction<devicesType>) => {
@@ -53,11 +53,18 @@ const ProductsSlice = createSlice({
             state.devices.push(action.payload)
         },
         removeDevice: (state, action: PayloadAction<removeDeviceType>) => {
-            state.devices.splice(action.payload.index,1)
+            state.devices.splice(action.payload.index, 1)
+        },
+        setProductsType: (state, action:PayloadAction<Array<mainProductsType>>) => {
+            state.productsType = action.payload
+        },
+        setBrands: (state, action:PayloadAction<Array<mainProductsType>>) => {
+            state.brands = action.payload
         }
     }
 })
 
 
-export const { setProductsType, setBrands, setDevices, removeDevice } = ProductsSlice.actions
+export const { addBrands, addProductsType, setProductsType,
+     setBrands, setDevices, removeDevice } = ProductsSlice.actions
 export default ProductsSlice.reducer

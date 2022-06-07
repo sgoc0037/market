@@ -1,7 +1,7 @@
-import { Menu, MenuProps, Modal } from "antd";
+import { Checkbox, Form, Menu, MenuProps, Modal, Radio } from "antd";
 import React, { FC, useState } from "react";
 import { useAppSelector } from "../app/hooks";
-import { getItem } from "../util/util";
+import { getItem, getOptions } from "../util/util";
 
 interface CollectionCreateFormProps {
     visible: boolean;
@@ -15,8 +15,11 @@ export const AdminEdit: FC<CollectionCreateFormProps> = ({
     onCancel
 }) => {
 
-    const types = useAppSelector(state=>state.products.productsType).slice(1)
-    const brands = useAppSelector(state=>state.products.brands).slice(1)
+    const brands = useAppSelector(state => state.products.brands).slice(1)
+    const types = useAppSelector(state => state.products.productsType).slice(1)
+
+    const optionBrands = getOptions(brands)
+    const optionTypes = getOptions(types)
 
     const [value, setValue] = useState<string>('brands')
 
@@ -29,26 +32,41 @@ export const AdminEdit: FC<CollectionCreateFormProps> = ({
         getItem('Производитель', 'brands')
     ]
 
+    const [form] = Form.useForm();
+
     return <Modal
         visible={visible}
         title="Редактирование"
         okText="Добавить"
         cancelText="Отмена"
+        onOk={() => {
+            form
+                .validateFields()
+                .then(values => {
+                    form.resetFields();
+                    onCreate(values);
+                })
+                .catch(info => {
+                    console.log('Validate Failed:', info);
+                });
+        }}
         onCancel={onCancel}>
         <Menu
             onClick={menuHandler}
             selectedKeys={[value]}
             items={items}
             mode="horizontal" />
+        <Form form={form}>
             {value === 'brands' &&
-                brands.map(item=> {
-                    return <span>{item.name}</span>
-                })
+                <Form.Item name="brandsGroup">
+                    <Checkbox.Group options={optionBrands} />
+                </Form.Item>
             }
             {value === 'productsType' &&
-                types.map(item=> {
-                    return <span>{item.name}</span>
-                })
+                <Form.Item name="typesGroup">
+                    <Checkbox.Group options={optionTypes} />
+                </Form.Item>
             }
+        </Form>
     </Modal>
 }

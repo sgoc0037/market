@@ -10,3 +10,7 @@ export interface formData extends mainProductsType {
     modeForm: modeForm
     newProduct?: devicesType
 }
+
+export interface editData {
+    [index: string] : Array<string>
+}

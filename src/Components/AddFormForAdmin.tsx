@@ -4,6 +4,7 @@ import { nanoid } from "nanoid";
 import { useState } from "react";
 import { useAppSelector } from "../app/hooks";
 import { formData, modeForm, } from "../Types/FormType";
+import { getOptions } from "../util/util";
 
 interface CollectionCreateFormProps {
     visible: boolean;
@@ -20,17 +21,9 @@ export const AddFormForAdmin: React.FC<CollectionCreateFormProps> = ({
     const brands = useAppSelector(state => state.products.brands).slice(1)
     const types = useAppSelector(state => state.products.productsType).slice(1)
 
-    const optionBrands = brands.map(item => {
-        return {
-            value: item.name
-        }
-    })
+    const optionBrands = getOptions(brands)
 
-    const optionTypes = types.map(item => {
-        return {
-            value: item.name
-        }
-    })
+    const optionTypes = getOptions(types)
 
     const optionModeForm = [
         {
@@ -91,7 +84,6 @@ export const AddFormForAdmin: React.FC<CollectionCreateFormProps> = ({
             <Form
                 form={form}
                 layout="vertical"
-                name="form_in_modal"
                 initialValues={{ modeForm: currentRadioValue }}
             >
                 <Form.Item name="modeForm">
