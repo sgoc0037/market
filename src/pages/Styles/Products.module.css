@@ -1,9 +1,13 @@
 .products {
+    margin-top: 30px;
     display: flex;
     justify-content: space-around;
     align-items: flex-start;
     flex-wrap: wrap;
 }
-.products__menu {
+.products__product {
     width: 15%;
+}
+.products__brand {
+    width: 80%;
 }

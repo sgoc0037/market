@@ -8,6 +8,7 @@ import { addBrands, addProductsType, setBrands, setDevices, setProductsType } fr
 import { editData, formData, modeForm } from '../Types/FormType'
 import { path } from '../Types/RoutesType'
 import { getNewArray } from '../util/util'
+import style from './Styles/Admin.module.css'
 
 export const Admin = () => {
 
@@ -42,47 +43,41 @@ export const Admin = () => {
         if (name === 'brandsGroup') {
             const preparation = getNewArray(brands, data[name])
             dispatch(setBrands(preparation))
-        } else if (name === 'productsType') {
+        } else {
             const preparation = getNewArray(types, data[name])
             dispatch(setProductsType(preparation))
-        } else {
-            return alert('Ошибка')
         }
     }
 
-    return <div>
-        <div>
-            <Button
-                type="primary"
-                style={{ background: 'deepskyblue' }}
-                onClick={() => {
-                    setVisible(true);
-                }}
-            >
-                Редактирование
-            </Button>
-            <Button
-                style={{ background: 'crimson' }}
-                type='primary'><Link to={`../${path.DELETE}`}>Удаление товара</Link></Button>
-            <AddFormForAdmin
-                visible={visible}
-                onCreate={onCreate}
-                onCancel={() => {
-                    setVisible(false);
-                }}
-            />
-        </div>
-        <div>
-            <Button
-                onClick={() => setVisible2(true)}
-                type='primary'
-                style={{ background: 'green' }}>
-                Редактор категории и производителя</Button>
-            <AdminEdit
-                visible={visible2}
-                onCreate={onCreate2}
-                onCancel={() => setVisible2(false)}
-            />
-        </div>
+    return <div className={style.admin}>
+        <Button
+            className={style.admin__add}
+            type="primary"
+            onClick={() => {
+                setVisible(true);
+            }}
+        >
+            Редактирование
+        </Button>
+        <Button
+            className={style.admin__delete}
+            type='primary'><Link to={`../${path.DELETE}`}>Удаление товара</Link>
+        </Button>
+        <Button
+            className={style.admin__change}
+            onClick={() => setVisible2(true)}
+            type='primary'>
+            Редактор категории и производителя
+        </Button>
+        <AddFormForAdmin
+            visible={visible}
+            onCreate={onCreate}
+            onCancel={() => setVisible(false)}
+        />
+        <AdminEdit
+            visible={visible2}
+            onCreate={onCreate2}
+            onCancel={() => setVisible2(false)}
+        />
     </div>
 }

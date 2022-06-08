@@ -10,9 +10,7 @@ import { getDevice } from '../util/util'
 
 export const Shop = () => {
 
-    const location = useLocation().pathname.split('/') //<=== [0: "",1: 'basket' or 'products',2: "here name for device"]
-    const name = location[2]
-    const typePage = location[1]
+    const [,typePage,name] = useLocation().pathname.split('/') //<=== [0: "",1: 'basket' or 'products',2: "here name for device"]
 
     const devices = useAppSelector(state => state.products.devices)
     const basket = useAppSelector(state => state.basket.basket)
