@@ -5,7 +5,7 @@ import { Admin } from '../pages/Admin';
 import { Auth } from '../pages/Auth';
 import { Basket } from '../pages/Basket';
 import { Default } from '../pages/Default';
-import { Products } from '../pages/Products';
+import { Products } from '../pages/Products/Products';
 import { Shop } from '../pages/Shop';
 import { path } from '../Types/RoutesType';
 import { DeleteFormForAdmin } from './DeleteFormForAdmin';

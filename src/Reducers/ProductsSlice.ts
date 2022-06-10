@@ -1,3 +1,4 @@
+import { nanoid } from 'nanoid';
 import { removeDeviceType } from './../Types/ProductsSliceType';
 import { devicesType, mainProductsType } from '../Types/ProductsSliceType';
 import { PayloadAction } from '@reduxjs/toolkit';
@@ -7,18 +8,18 @@ import { image } from '../util/util';
 
 const initialState: productsSliceType = {
     productsType: [
-        { id: '0', name: 'Любой' },
-        { id: '1', name: 'Холодильники' },
-        { id: '2', name: 'Смартфоны' }
+        { id: nanoid(), name: 'Любой' },
+        { id: nanoid(), name: 'Холодильники' },
+        { id: nanoid(), name: 'Смартфоны' }
     ],
     brands: [
-        { id: '0', name: 'Любой' },
-        { id: '1', name: 'Samsung' },
-        { id: '2', name: 'Apple' },
+        { id: nanoid(), name: 'Любой' },
+        { id: nanoid(), name: 'Samsung' },
+        { id: nanoid(), name: 'Apple' },
     ],
     devices: [
         {
-            id: '1',
+            id: nanoid(),
             name: 'dasdasdas',
             price: 25000,
             img: image,
@@ -26,7 +27,7 @@ const initialState: productsSliceType = {
             type: 'Холодильники'
         },
         {
-            id: '2',
+            id: nanoid(),
             name: 'applemakentosh',
             price: 312515,
             img: image,

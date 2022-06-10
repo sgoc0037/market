@@ -1,17 +1,17 @@
 import React, { useState } from 'react'
-import { useAppSelector } from '../app/hooks'
-import { ProductsMenu } from '../Components/ProductsMenu';
-import { PackCard } from '../Components/Cards/PackCard';
-import { devicesType } from '../Types/ProductsSliceType';
+import { useAppSelector } from '../../app/hooks'
+import { ProductsMenu } from './ProductsMenu';
+import { PackCard } from '../../Components/Cards/PackCard';
+import { devicesType } from '../../Types/ProductsSliceType';
 import style from './Styles/Products.module.css'
 
 type attr = 'type' | 'brand'
 
 export const Products = () => {
 
-    const productsType = useAppSelector(state => state.products.productsType)
-    const brands = useAppSelector(state => state.products.brands)
-    const devices = useAppSelector(state => state.products.devices)
+    const productsType = useAppSelector(state=>state.products.productsType)
+    const brands = useAppSelector(state=>state.products.brands)
+    const devices = useAppSelector(state=>state.products.devices)
 
     const [currentDevices, setCurrentDevices] = useState<Array<devicesType>>(devices)
 

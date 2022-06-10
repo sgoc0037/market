@@ -1,7 +1,7 @@
 import { Menu, MenuProps } from 'antd'
 import React, { FC } from 'react'
-import { mainProductsType } from '../Types/ProductsSliceType';
-import { getItem } from '../util/util';
+import { mainProductsType } from '../../Types/ProductsSliceType';
+import { getItem } from '../../util/util';
 
 interface productsMenuType {
     arr: Array<mainProductsType>
