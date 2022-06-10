@@ -1,16 +1,16 @@
-import { PlusCircleOutlined } from '@ant-design/icons'
+import { MinusOutlined, PlusCircleOutlined } from '@ant-design/icons'
 import { Button, Spin } from 'antd'
 import React, { FC, MouseEvent } from 'react'
 import { useDispatch } from 'react-redux'
 import { useLocation } from 'react-router-dom'
 import { useAppSelector } from '../app/hooks'
 import { Amount } from '../Components/Amount'
-import { addToBasket } from '../Reducers/BasketSlice'
-import { getDevice } from '../util/util'
+import { addToBasket, deleteFromBasket } from '../Reducers/BasketSlice'
+import { getDevice, getIndex, searchHimself } from '../util/util'
 
 export const Shop = () => {
 
-    const [,typePage,name] = useLocation().pathname.split('/') //<=== [0: "",1: 'basket' or 'products',2: "here name for device"]
+    const [, typePage, name] = useLocation().pathname.split('/') //<=== [0: "",1: 'basket' or 'products',2: "here name for device"]
 
     const devices = useAppSelector(state => state.products.devices)
     const basket = useAppSelector(state => state.basket.basket)
@@ -19,8 +19,15 @@ export const Shop = () => {
     const data = (typePage === 'products')
         ? getDevice(devices, name) : getDevice(basket, name);
 
-    const clickHandler = (e: MouseEvent<HTMLButtonElement>) => {
+    const inBasket = searchHimself(basket, data.id)
+
+    const addHandler = (e: MouseEvent<HTMLButtonElement>) => {
         dispatch(addToBasket(data))
+    }
+
+    const deleteHandler = () => {
+        const index = getIndex(basket, data.id)
+        dispatch(deleteFromBasket(index))
     }
 
     return <>
@@ -30,11 +37,18 @@ export const Shop = () => {
                 <h2>{name}</h2>
                 <div style={{ display: 'flex', justifyContent: 'space-around' }}>
                     <span>Цена:{data.price}</span>
-                    {typePage === 'products' &&
-                        <Button
-                            onClick={clickHandler}
-                            type='primary'
-                            icon={<PlusCircleOutlined />}>Добавить в корзину</Button>
+                    {typePage === 'products'
+                        ? inBasket
+                            ? <Button
+                                onClick={deleteHandler}
+                                style={{ background: 'green' }}
+                                type='primary'
+                                icon={<MinusOutlined />} >Удалить из корзины</Button>
+                            : <Button
+                                onClick={addHandler}
+                                type='primary'
+                                icon={<PlusCircleOutlined />}>Добавить в корзину</Button>
+                        : ''
                     }
                     {typePage === 'basket' &&
                         <Amount amount={+data.amount} id={data.id} />

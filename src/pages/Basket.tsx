@@ -31,8 +31,6 @@ export const Basket = () => {
         dispatch(deleteFromBasket(index))
     }
 
-    console.log('render')
-
     return <div className={style.basket}>
         {basket.length === 0 &&
             < span > Тут пусто</span>

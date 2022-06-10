@@ -13,7 +13,7 @@ interface CardBasketType {
 
 export const CardBasket: FC<CardBasketType> = ({ data,deleteFromBasket }) => {
 
-    const { brand, id, img, name, price, type, amount } = data
+    const { id, img, name, price, amount } = data
 
     const link = <Link to={name} key={id}><ArrowRightOutlined /></Link>
 

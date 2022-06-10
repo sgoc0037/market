@@ -1,4 +1,4 @@
-import { ArrowRightOutlined, PlusOutlined } from "@ant-design/icons"
+import { ArrowRightOutlined, CheckOutlined, PlusOutlined } from "@ant-design/icons"
 import { Button, Card, Tooltip } from "antd"
 import Meta from "antd/lib/card/Meta"
 import React, { FC, useState } from "react"
@@ -34,7 +34,9 @@ export const DeviceCard: FC<deviceCardType> = ({ removeProduct, setValue, data }
         setInBasket(true)
     }
 
-    const actions: Array<React.ReactNode> =
+    const actions: Array<React.ReactNode> = inBasket ? 
+    [<Tooltip title="Добавлено"><CheckOutlined /></Tooltip>,link] 
+    :
         [
             <Tooltip title='Добавить в корзину'>
                 <Button

@@ -44,7 +44,6 @@ export const AdminEdit: FC<CollectionCreateFormProps> = ({
             form
                 .validateFields()
                 .then(values => {
-                    console.log(values)
                     form.resetFields();
                     onCreate(values);
                 })
@@ -74,10 +73,10 @@ export const AdminEdit: FC<CollectionCreateFormProps> = ({
                     {brands.concat(types).map(item => {
                         return <Form.Item
                             key={item.id}
-                            name={item.id}
                             label={item.name}
+                            name={item.id}
                         >
-                            <Input value={item.name} placeholder="Внесите изменения" />
+                            <Input value={item.name} placeholder='Внесите изменения' />
                         </Form.Item>
                     })}
                 </>
