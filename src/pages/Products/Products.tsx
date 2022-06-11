@@ -3,7 +3,7 @@ import { useAppSelector } from '../../app/hooks'
 import { ProductsMenu } from './ProductsMenu';
 import { PackCard } from '../../Components/Cards/PackCard';
 import { devicesType } from '../../Types/ProductsSliceType';
-import style from '../Styles/Products.module.css'
+import style from './Products.module.css'
 
 type attr = 'type' | 'brand'
 

@@ -1,8 +1,8 @@
 import { Button, Checkbox, Form, Input } from 'antd';
 import { CheckboxChangeEvent } from 'antd/lib/checkbox';
-import { useAppDispatch } from '../app/hooks';
-import { setAuth } from '../Reducers/AuthSlice';
-import style from './Styles/auth.module.css'
+import { useAppDispatch } from '../../app/hooks';
+import { setAuth } from '../../Reducers/AuthSlice';
+import style from './auth.module.css'
 
 
 export const Login = () => {
@@ -36,6 +36,7 @@ export const Login = () => {
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
         autoComplete="off"
+        
     >
         <Checkbox style={{padding: '4px 11px'}} onChange={handlerChange}>Click me for auth.</Checkbox>
         <Form.Item

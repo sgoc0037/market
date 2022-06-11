@@ -3,10 +3,10 @@ import { Button, Spin } from 'antd'
 import React, { FC, MouseEvent } from 'react'
 import { useDispatch } from 'react-redux'
 import { useLocation } from 'react-router-dom'
-import { useAppSelector } from '../app/hooks'
-import { Amount } from '../Components/Amount'
-import { addToBasket, deleteFromBasket } from '../Reducers/BasketSlice'
-import { getDevice, getIndex, searchHimself } from '../util/util'
+import { useAppSelector } from '../../app/hooks'
+import { Amount } from '../../Components/Amount'
+import { addToBasket, deleteFromBasket } from '../../Reducers/BasketSlice'
+import { getDevice, getIndex, searchHimself } from '../../util/util'
 
 export const Shop = () => {
 

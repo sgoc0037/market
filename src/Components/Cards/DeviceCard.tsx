@@ -6,7 +6,7 @@ import { Link } from "react-router-dom"
 import { useAppSelector } from "../../app/hooks"
 import { devicesType } from "../../Types/ProductsSliceType"
 import { searchHimself } from "../../util/util"
-import style from '../Styles/PackCard.module.css'
+import style from './PackCard.module.css'
 
 interface deviceCardType {
     removeProduct?: (value: string) => void
@@ -52,7 +52,7 @@ export const DeviceCard: FC<deviceCardType> = ({ removeProduct, setValue, data }
     return <Card
         style={inBasket ? { border: '2px solid #9e9e9e' } : { border: '2px solid #f0f0f0' }}
         onClick={clickHandler}
-        actions={actions}
+        actions={!removeProduct ? actions : undefined}
         className={style.packCard__card}
         key={id}
         cover={<img alt={name} src={img} />}

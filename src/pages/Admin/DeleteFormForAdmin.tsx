@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { useAppSelector } from "../app/hooks";
-import { removeDevice } from "../Reducers/ProductsSlice";
-import { getIndex } from "../util/util";
-import { PackCard } from "./Cards/PackCard";
-import { Goback } from "./goBack";
+import { useAppSelector } from "../../app/hooks";
+import { removeDevice } from "../../Reducers/ProductsSlice";
+import { getIndex } from "../../util/util";
+import { PackCard } from "../../Components/Cards/PackCard";
 
 export const DeleteFormForAdmin = () => {
 

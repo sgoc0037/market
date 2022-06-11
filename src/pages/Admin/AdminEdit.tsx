@@ -1,7 +1,7 @@
-import { Checkbox, Form, Input, Menu, MenuProps, Modal, Radio } from "antd";
+import { Checkbox, Form, Menu, MenuProps, Modal } from "antd";
 import React, { FC, useState } from "react";
-import { useAppSelector } from "../app/hooks";
-import { getItem, getOptions } from "../util/util";
+import { useAppSelector } from "../../app/hooks";
+import { getItem, getOptions } from "../../util/util";
 
 interface CollectionCreateFormProps {
     visible: boolean;
@@ -29,15 +29,14 @@ export const AdminEdit: FC<CollectionCreateFormProps> = ({
 
     const items: MenuProps['items'] = [
         getItem('Категория', 'productsType'),
-        getItem('Производитель', 'brands'),
-        getItem('Редактирование', 'change')
+        getItem('Производитель', 'brands')
     ]
 
     const [form] = Form.useForm();
 
     return <Modal
         visible={visible}
-        title="Редактирование"
+        title="Выберите на удаление"
         okText="Подтвердить"
         cancelText="Отмена"
         onOk={() => {
@@ -67,19 +66,6 @@ export const AdminEdit: FC<CollectionCreateFormProps> = ({
                 <Form.Item name="typesGroup">
                     <Checkbox.Group options={optionTypes} />
                 </Form.Item>
-            }
-            {value === 'change' &&
-                <>
-                    {brands.concat(types).map(item => {
-                        return <Form.Item
-                            key={item.id}
-                            label={item.name}
-                            name={item.id}
-                        >
-                            <Input value={item.name} placeholder='Внесите изменения' />
-                        </Form.Item>
-                    })}
-                </>
             }
         </Form>
     </Modal>

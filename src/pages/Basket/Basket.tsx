@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { useAppSelector } from '../app/hooks'
-import { CardBasket } from '../Components/Cards/CardForBasket'
-import { deleteFromBasket } from '../Reducers/BasketSlice'
-import { getIndex } from '../util/util'
-import style from './Styles/Basket.module.css'
+import { useAppSelector } from '../../app/hooks'
+import { CardBasket } from '../../Components/Cards/CardForBasket'
+import { deleteFromBasket } from '../../Reducers/BasketSlice'
+import { getIndex } from '../../util/util'
+import style from './Basket.module.css'
 
 export const Basket = () => {
 

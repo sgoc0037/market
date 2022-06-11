@@ -1,14 +1,14 @@
 import { Button } from 'antd'
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { useAppDispatch, useAppSelector } from '../app/hooks'
-import { AddFormForAdmin } from '../Components/AddFormForAdmin'
-import { AdminEdit } from '../Components/AdminEdit'
-import { addBrands, addProductsType, setBrands, setDevices, setProductsType } from '../Reducers/ProductsSlice'
-import { editData, formData, modeForm } from '../Types/FormType'
-import { path } from '../Types/RoutesType'
-import { getNewArray } from '../util/util'
-import style from './Styles/Admin.module.css'
+import { useAppDispatch, useAppSelector } from '../../app/hooks'
+import { AddFormForAdmin } from './AddFormForAdmin'
+import { AdminEdit } from './AdminEdit'
+import { addBrands, addProductsType, setBrands, setDevices, setProductsType } from '../../Reducers/ProductsSlice'
+import { editData, formData, modeForm } from '../../Types/FormType'
+import { path } from '../../Types/RoutesType'
+import { getNewArray } from '../../util/util'
+import style from './Admin.module.css'
 
 export const Admin = () => {
 

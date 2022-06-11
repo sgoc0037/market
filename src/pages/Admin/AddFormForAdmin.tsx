@@ -2,9 +2,9 @@ import { Form, Input, InputNumber, Modal, Radio, RadioChangeEvent, Select } from
 import TextArea from "antd/lib/input/TextArea";
 import { nanoid } from "nanoid";
 import { useState } from "react";
-import { useAppSelector } from "../app/hooks";
-import { formData, modeForm, } from "../Types/FormType";
-import { getOptions } from "../util/util";
+import { useAppSelector } from "../../app/hooks";
+import { formData, modeForm, } from "../../Types/FormType";
+import { getOptions } from "../../util/util";
 
 interface CollectionCreateFormProps {
     visible: boolean;

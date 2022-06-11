@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from "../../app/hooks"
 import { addToBasket } from "../../Reducers/BasketSlice"
 import { devicesType } from "../../Types/ProductsSliceType"
 import { DeviceCard } from "./DeviceCard"
-import style from '../Styles/PackCard.module.css'
+import style from './PackCard.module.css'
 
 interface packCardType {
     data: Array<devicesType>

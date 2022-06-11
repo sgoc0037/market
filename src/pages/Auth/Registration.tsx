@@ -1,7 +1,7 @@
 import { Button, Form, Input } from "antd";
 import React, { FC } from "react";
-import { formDataType } from "../Types/AuthType";
-import style from './Styles/auth.module.css'
+import { formDataType } from "../../Types/AuthType";
+import style from './auth.module.css'
 
 interface RegistrationType {
     onFinish: (data: formDataType) => void

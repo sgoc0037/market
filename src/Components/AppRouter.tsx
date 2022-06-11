@@ -1,14 +1,14 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { useAppSelector } from '../app/hooks';
-import { Admin } from '../pages/Admin';
-import { Auth } from '../pages/Auth';
-import { Basket } from '../pages/Basket';
-import { Default } from '../pages/Default';
+import { Admin } from '../pages/Admin/Admin';
+import { Auth } from '../pages/Auth/Auth';
+import { Basket } from '../pages/Basket/Basket';
+import { Default } from '../pages/Default/Default';
 import { Products } from '../pages/Products/Products';
-import { Shop } from '../pages/Shop';
+import { Shop } from '../pages/Shop/Shop';
 import { path } from '../Types/RoutesType';
-import { DeleteFormForAdmin } from './DeleteFormForAdmin';
+import { DeleteFormForAdmin } from '../pages/Admin/DeleteFormForAdmin';
 
 export const AppRouter = () => {
 

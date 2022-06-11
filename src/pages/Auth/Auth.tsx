@@ -1,10 +1,10 @@
 import { Menu, MenuProps } from 'antd';
 import { useState } from 'react';
-import { useAppSelector } from '../app/hooks';
-import { Login } from '../Components/Login';
-import { Registration } from '../Components/Registration';
-import { formDataType } from '../Types/AuthType';
-import { getItem } from '../util/util';
+import { useAppSelector } from '../../app/hooks';
+import { Login } from './Login';
+import { Registration } from './Registration';
+import { formDataType } from '../../Types/AuthType';
+import { getItem } from '../../util/util';
 
 export const Auth = () => {
 

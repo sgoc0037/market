@@ -4,7 +4,7 @@ import { Meta } from "antd/lib/list/Item";
 import React, { FC } from "react";
 import { Link } from "react-router-dom";
 import { basketMain } from "../../Types/BasketSliceType";
-import style from '../Styles/PackCard.module.css'
+import style from './PackCard.module.css'
 
 interface CardBasketType {
     deleteFromBasket: (id:string)=> void
